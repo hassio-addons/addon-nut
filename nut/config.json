@@ -18,6 +18,9 @@
   "devices": [
     "/dev/bus/usb:/dev/bus/usb:rwm"
   ],
+  "map": [
+    "config"
+  ],
   "options": {
     "log_level": "info",
     "users": [
