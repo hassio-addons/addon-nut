@@ -2,9 +2,9 @@
 image: docker:latest
 
 variables:
-  ADDON_GITHUB_REPO: hassio-addons/addon-lovelace-migration
-  ADDON_SLUG: lovelace-migration
-  ADDON_TARGET: lovelace-migration
+  ADDON_GITHUB_REPO: hassio-addons/addon-nut
+  ADDON_SLUG: nut
+  ADDON_TARGET: nut
   DOCKER_DRIVER: overlay2
   DOCKER_HUB_ORG: hassioaddons
 
