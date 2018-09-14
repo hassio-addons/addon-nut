@@ -1,0 +1,78 @@
+{
+  "name": "Network UPS Tools",
+  "version": "dev",
+  "slug": "nut",
+  "description": "Manage battery backup (UPS) devices",
+  "url": "https://github.com/hassio-addons/addon-nut",
+  "startup": "system",
+  "arch": [
+    "aarch64",
+    "amd64",
+    "armhf",
+    "i386"
+  ],
+  "boot": "auto",
+  "ports": {
+    "3493/tcp": 3493
+  },
+  "devices": [
+    "/dev/bus/usb:/dev/bus/usb:rwm"
+  ],
+  "options": {
+    "log_level": "info",
+    "users": [
+      {
+        "username": "",
+        "password": "",
+        "instcmds": ["all"],
+        "actions": []
+      }
+    ],
+    "devices": [
+      {
+        "name": "myups",
+        "driver": "usbhid-ups",
+        "port": "auto",
+        "config": []
+      }
+    ],
+    "upsd": [
+      "LISTEN 0.0.0.0"
+    ],
+    "nut": {
+      "mode": "netserver"
+    }
+  },
+  "schema": {
+    "log_level": "match(^(trace|debug|info|notice|warning|error|fatal)$)",
+    "users": [
+      {
+        "username": "str",
+        "password": "str",
+        "instcmds": ["str"],
+        "actions": ["str"],
+        "upsmon": "match(^(master|slave)$)?"
+      }
+    ],
+    "devices": [
+      {
+        "name": "str",
+        "driver": "str",
+        "port": "str",
+        "config": ["str"]
+      }
+    ],
+    "upsd": ["match(^(MAXAGE|STATEPATH|LISTEN|MAXCONN|CERTFILE|CERTPATH|CERTIDENT|CERTREQUEST) )"],
+    "nut": {
+      "mode": "match(^(none|standalone|netserver|netclient)$)",
+      "upsd_options": "str?",
+      "upsmon_options": "str?",
+      "poweroff_wait": "str?"
+    },
+    "i_like_to_be_pwned": "bool?",
+    "leave_front_door_open": "bool?"
+  },
+  "environment": {
+    "LOG_FORMAT": "{LEVEL}: {MESSAGE}"
+  }
+}

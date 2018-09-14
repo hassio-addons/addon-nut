@@ -1,0 +1,16 @@
+#!/usr/bin/with-contenv bash
+# ==============================================================================
+# Community Hass.io Add-ons: FTP
+# Starts UPS drivers
+# ==============================================================================
+# shellcheck disable=SC1091
+source /usr/lib/hassio-addons/base.sh
+
+hass.log.info "Starting the UPS drivers"
+
+# Run upsdrvctl
+if hass.debug; then
+    exec upsdrvctl -D start
+else
+    exec upsdrvctl start
+fi

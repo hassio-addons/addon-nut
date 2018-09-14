@@ -1,0 +1,14 @@
+#!/usr/bin/with-contenv bash
+# ==============================================================================
+# Community Hass.io Add-ons: Network UPS Tools
+# Run upsd
+# ==============================================================================
+# shellcheck disable=SC1091
+source /usr/lib/hassio-addons/base.sh
+
+# hass.log.trace "Disabling errexit"
+# set +o errexit
+
+# Run upsd
+hass.log.info "Starting the UPS information server"
+exec upsd -D

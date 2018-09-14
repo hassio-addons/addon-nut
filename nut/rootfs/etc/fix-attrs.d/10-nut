@@ -1,0 +1,3 @@
+/var/run/nut false root:nut 0770 0770
+/etc/nut/* false root:nut 0660 0660
+/dev/bus/usb/*/* false root 0777 0777
