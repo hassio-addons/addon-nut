@@ -31,7 +31,7 @@ add-on:
 sensor:
   - platform: nut
     name: "CyberPower 1500"
-    host: {%- if channel == "edge" -%}
+    host: {% if channel == "edge" -%}
             40817795
           {%- elif channel == "beta" -%}
             UNKNOWN
