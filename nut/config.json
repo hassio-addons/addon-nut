@@ -13,7 +13,7 @@
   ],
   "boot": "auto",
   "hassio_api": true,
-  "homeassistant_api": false,
+  "homeassistant_api": true,
   "ports": {
     "3493/tcp": 3493
   },
