@@ -23,6 +23,7 @@
   "map": [
     "config"
   ],
+  "stdin": true,
   "options": {
     "log_level": "info",
     "users": [
