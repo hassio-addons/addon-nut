@@ -6,9 +6,6 @@
 # shellcheck disable=SC1091
 source /usr/lib/hassio-addons/base.sh
 
-# hass.log.trace "Disabling errexit"
-# set +o errexit
-
 # Run upsd
 hass.log.info "Starting the UPS information server"
 exec upsd -D

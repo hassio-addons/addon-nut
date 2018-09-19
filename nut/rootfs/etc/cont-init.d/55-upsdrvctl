@@ -1,6 +1,6 @@
 #!/usr/bin/with-contenv bash
 # ==============================================================================
-# Community Hass.io Add-ons: FTP
+# Community Hass.io Add-ons: Network UPS Tools
 # Starts UPS drivers
 # ==============================================================================
 # shellcheck disable=SC1091
