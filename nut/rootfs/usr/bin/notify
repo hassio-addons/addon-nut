@@ -1,0 +1,15 @@
+#!/bin/bash
+# ==============================================================================
+# Community Hass.io Add-ons: Network UPS Tools
+# Notify handler script
+# ==============================================================================
+# shellcheck disable=SC1091
+source /usr/lib/hassio-addons/base.sh
+
+readonly NOTIFYMSG="${1}"
+
+hass.log.info "Received UPS notify event"
+
+hass.log.info "NOTIFYMSG=${NOTIFYMSG}"
+hass.log.info "NOTIFYTYPE=${NOTIFYTYPE}"
+hass.log.info "UPSNAME=${UPSNAME}"
