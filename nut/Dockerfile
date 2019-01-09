@@ -8,7 +8,7 @@ COPY rootfs /
 # Setup base
 RUN apk add --no-cache nut@edge=2.7.4-r5
 
-# Build arugments
+# Build arguments
 ARG BUILD_ARCH
 ARG BUILD_DATE
 ARG BUILD_REF
