@@ -6,6 +6,7 @@ variables:
   ADDON_SLUG: "nut"
   ADDON_TARGET: "nut"
 
+  ADDON_LEGACY_TAGS: "true"
 
   ADDON_AARCH64_BASE: "hassioaddons/base-aarch64:3.1.0"
   ADDON_AMD64_BASE: "hassioaddons/base-amd64:3.1.0"
