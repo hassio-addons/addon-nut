@@ -4,6 +4,12 @@
 ![Project Stage][project-stage-shield]
 [![License][license-shield]](LICENSE.md)
 
+![Supports armhf Architecture][armhf-shield]
+![Supports armv7 Architecture][armv7-shield]
+![Supports aarch64 Architecture][aarch64-shield]
+![Supports amd64 Architecture][amd64-shield]
+![Supports i386 Architecture][i386-shield]
+
 [![GitLab CI][gitlabci-shield]][gitlabci]
 ![Project Maintenance][maintenance-shield]
 [![GitHub Activity][commits-shield]][commits]
@@ -65,17 +71,6 @@ comparison to installing any other Hass.io add-on.
 
 **NOTE**: Do not add this repository to Hass.io, please use:
 `https://github.com/hassio-addons/repository`.
-
-## Docker status
-
-![Supports armhf Architecture][armhf-shield]
-![Supports aarch64 Architecture][aarch64-shield]
-![Supports amd64 Architecture][amd64-shield]
-![Supports i386 Architecture][i386-shield]
-
-[![Docker Version][version-shield]][microbadger]
-[![Docker Layers][layers-shield]][microbadger]
-[![Docker Pulls][pulls-shield]][dockerhub]
 
 ## Configuration
 
@@ -392,6 +387,7 @@ SOFTWARE.
 [aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg
 [amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg
 [armhf-shield]: https://img.shields.io/badge/armhf-yes-green.svg
+[armv7-shield]: https://img.shields.io/badge/armv7-yes-green.svg
 [buymeacoffee-shield]: https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-2.svg
 [buymeacoffee]: https://www.buymeacoffee.com/dale3h
 [commits-shield]: https://img.shields.io/github/commit-activity/y/hassio-addons/addon-nut.svg
@@ -409,10 +405,8 @@ SOFTWARE.
 [i386-shield]: https://img.shields.io/badge/i386-yes-green.svg
 [issue]: https://github.com/hassio-addons/addon-nut/issues
 [keepchangelog]: https://keepachangelog.com/en/1.0.0/
-[layers-shield]: https://images.microbadger.com/badges/image/hassioaddons/nut.svg
 [license-shield]: https://img.shields.io/github/license/hassio-addons/addon-nut.svg
 [maintenance-shield]: https://img.shields.io/maintenance/yes/2019.svg
-[microbadger]: https://microbadger.com/images/hassioaddons/nut
 [nut-acknowledgements]: https://networkupstools.org/acknowledgements.html
 [nut-compatible]: https://networkupstools.org/stable-hcl.html
 [nut-conf]: https://networkupstools.org/docs/man/nut.conf.html
@@ -420,7 +414,6 @@ SOFTWARE.
 [nut-sensor-docs]: https://www.home-assistant.io/components/sensor.nut/
 [nutupsdrv]: https://networkupstools.org/docs/man/nutupsdrv.html
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-experimental-yellow.svg
-[pulls-shield]: https://img.shields.io/docker/pulls/hassioaddons/nut.svg
 [reddit]: https://reddit.com/r/homeassistant
 [releases-shield]: https://img.shields.io/github/release/hassio-addons/addon-nut.svg
 [releases]: https://github.com/hassio-addons/addon-nut/releases
@@ -434,4 +427,3 @@ SOFTWARE.
 [upsd]: https://networkupstools.org/docs/man/upsd.html
 [upsmon]: https://networkupstools.org/docs/man/upsmon.html
 [usbhid-ups]: https://networkupstools.org/docs/man/usbhid-ups.html
-[version-shield]: https://images.microbadger.com/badges/version/hassioaddons/nut.svg
