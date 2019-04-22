@@ -1,15 +1,12 @@
-#!/usr/bin/with-contenv bash
+#!/usr/bin/with-contenv bashio
 # ==============================================================================
 # Community Hass.io Add-ons: Network UPS Tools
 # Starts UPS drivers
 # ==============================================================================
-# shellcheck disable=SC1091
-source /usr/lib/hassio-addons/base.sh
-
-hass.log.info "Starting the UPS drivers"
+bashio::log.info "Starting the UPS drivers"
 
 # Run upsdrvctl
-if hass.debug; then
+if bashio::debug; then
     exec upsdrvctl -D start
 else
     exec upsdrvctl start

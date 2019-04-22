@@ -6,7 +6,9 @@ FROM ${BUILD_FROM}
 COPY rootfs /
 
 # Setup base
-RUN apk add --no-cache nut@edge=2.7.4-r6
+RUN \
+    apk add --no-cache nut@edge=2.7.4-r6 \
+    && rm -fr /etc/nut/*.apk-new
 
 # Build arguments
 ARG BUILD_ARCH

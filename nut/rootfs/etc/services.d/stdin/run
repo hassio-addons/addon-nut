@@ -1,25 +1,22 @@
-#!/usr/bin/with-contenv bash
+#!/usr/bin/with-contenv bashio
 # ==============================================================================
 # Community Hass.io Add-ons: Network UPS Tools
 # Run stdin listener
 # ==============================================================================
-# shellcheck disable=SC1091
-source /usr/lib/hassio-addons/base.sh
-
 declare cmd
 declare args
 
-# hass.log.info "Listening for messages via stdin service call"
+bashio::log.info "Listening for messages via stdin service call..."
 
 # Listen for stdin messages
 while read -r msg; do
-    hass.log.debug "${msg}"
-    cmd=$(hass.jq "${msg}" ".command")
-    hass.log.info "Received message with command: ${cmd}"
+    bashio::log.debug "${msg}"
+    cmd=$(bashio::jq "${msg}" ".command")
+    bashio::log.info "Received message with command: ${cmd}"
 
     case "${cmd}" in
         upsc)
-            args=$(hass.jq "${msg}" ".arguments // empty")
+            args=$(bashio::jq "${msg}" ".arguments // empty")
             set -x
             # shellcheck disable=SC2086
             exec upsc ${args}
@@ -31,7 +28,7 @@ while read -r msg; do
             set +x
             ;;
         *)
-            hass.log.error "Command not found: ${cmd}"
+            bashio::log.error "Command not found: ${cmd}"
             ;;
     esac
 done < /proc/1/fd/0
