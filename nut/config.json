@@ -19,6 +19,9 @@
   "ports": {
     "3493/tcp": 3493
   },
+  "ports_description": {
+    "3493/tcp": "Network UPS Tools"
+  },
   "devices": [
     "/dev/bus/usb:/dev/bus/usb:rwm"
   ],
