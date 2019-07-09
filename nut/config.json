@@ -37,19 +37,47 @@
         "instcmds": ["all"],
         "actions": []
       }
-    ]
+    ],
+    "devices": [
+      {
+        "name": "myups",
+        "driver": "usbhid-ups",
+        "port": "auto",
+        "config": []
+      }
+    ],
+    "upsd": [
+      "LISTEN 0.0.0.0"
+    ],
+    "nut": {
+      "mode": "netserver",
+      "poweroff_wait": "5s"
+    }
   },
   "schema": {
     "log_level": "match(^(trace|debug|info|notice|warning|error|fatal)$)?",
     "users": [
       {
-        "username": "str",
+        "username": "match(^[a-zA-Z0-9_]+$)?",
         "password": "str",
         "instcmds": ["str"],
         "actions": ["str"],
         "upsmon": "match(^(master|slave)$)?"
       }
     ],
+    "devices": [
+      {
+        "name": "str",
+        "driver": "str",
+        "port": "str",
+        "config": ["str"]
+      }
+    ],
+    "upsd": ["str"],
+    "nut": {
+      "mode": "match(^(none|standalone|netserver|netclient)$)",
+      "poweroff_wait": "match(^[0-9]+(s|m|h|d)$)"
+    },
     "i_like_to_be_pwned": "bool?",
     "leave_front_door_open": "bool?"
   }

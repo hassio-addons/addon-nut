@@ -268,16 +268,6 @@ Recognized values are `none`, `standalone`, `netserver` and `netclient`.
   other hosts that are more closely attached to the UPS, the mode should be
   set to `netclient`.
 
-#### Sub-option: `upsd_options`
-
-Set `upsd` specific options. See [`upsd(8)`][upsd] for more details. It is
-ignored when `mode` above indicates that no `upsd` should be running.
-
-#### Sub-option: `upsmon_options`
-
-Set `upsmon` specific options. See [`upsmon(8)`][upsmon] for more details. It
-is ignored when `mode` above indicates that no `upsmon` should be running.
-
 #### Sub-option: `poweroff_wait`
 
 At the end of an emergency system halt, the `upsmon` master will signal the UPS
@@ -301,8 +291,7 @@ using this option! USE AT YOUR OWN RISK!_
 ### Option: `leave_front_door_open`
 
 Adding this option to the add-on configuration allows you to disable
-authentication on the NUT server by setting it to `true` and leaving the
-username and password empty.
+authentication on the NUT server by setting it to `true`.
 
 **Note**: _We STRONGLY suggest, not to use this, even if this add-on is
 only exposed to your internal network. USE AT YOUR OWN RISK!_
