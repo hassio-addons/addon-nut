@@ -1,0 +1,9 @@
+#!/bin/bash
+# ==============================================================================
+# Community Hass.io Add-ons: Network UPS Tools
+# Script to shutdown Hassio from UPS Shutdowm Command
+# ==============================================================================
+
+curl -sS -X "POST" \
+     -H "X-HASSIO-KEY: ${HASSIO_TOKEN}" \
+     "http://hassio/host/shutdown"
