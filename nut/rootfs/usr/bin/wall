@@ -1,0 +1,6 @@
+#!/bin/bash
+# ==============================================================================
+# Community Hass.io Add-ons: Network UPS Tools
+# FSD Command seems to always call Wall, this file does nothing apart from
+# stopping S6 tearing down the upsmon process
+# ==============================================================================
