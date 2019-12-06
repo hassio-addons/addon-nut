@@ -14,10 +14,10 @@
   ],
   "boot": "auto",
   "hassio_api": true,
-  "hassio_role": "default",
+  "hassio_role": "manager",
   "homeassistant_api": true,
   "ports": {
-    "3493/tcp": 3493
+    "3493/tcp": null
   },
   "ports_description": {
     "3493/tcp": "Network UPS Tools"
@@ -25,10 +25,6 @@
   "devices": [
     "/dev/bus/usb:/dev/bus/usb:rwm"
   ],
-  "map": [
-    "config:rw"
-  ],
-  "stdin": true,
   "options": {
     "users": [
       {
@@ -37,7 +33,17 @@
         "instcmds": ["all"],
         "actions": []
       }
-    ]
+    ],
+    "devices": [
+      {
+        "name": "myups",
+        "driver": "usbhid-ups",
+        "port": "auto",
+        "config": []
+      }
+    ],
+    "mode": "netserver",
+    "shutdown_hassio": "false"
   },
   "schema": {
     "log_level": "match(^(trace|debug|info|notice|warning|error|fatal)$)?",
@@ -50,6 +56,20 @@
         "upsmon": "match(^(master|slave)$)?"
       }
     ],
+    "devices": [
+      {
+        "name": "str",
+        "driver": "str",
+        "port": "str",
+        "config": ["str"]
+      }
+    ],
+    "shutdown_hassio": "bool",
+    "mode": "match(^(netserver|netclient)$)",
+    "remote_ups_name": "str?",
+    "remote_ups_host": "str?",
+    "remote_ups_password": "str?",
+    "remote_ups_user": "str?",
     "i_like_to_be_pwned": "bool?",
     "leave_front_door_open": "bool?"
   }
