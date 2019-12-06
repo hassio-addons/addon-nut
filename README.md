@@ -74,8 +74,8 @@ comparison to installing any other Hass.io add-on.
 
 ## Configuration
 
-Even though this add-on is just a basic add-on, it does come with some
-configuration options to play around with.
+The addon can be used with the basic configuration, with over options for more
+advanced users.
 
 **Note**: _Remember to restart the add-on when the configuration is changed._
 
@@ -83,7 +83,6 @@ Network UPS Tools add-on configuration:
 
 ```json
 {
-  "log_level": "info",
   "users": [
     {
       "username": "nutty",
@@ -102,14 +101,12 @@ Network UPS Tools add-on configuration:
       "config": []
     }
   ],
-  "upsd": [
-    "LISTEN 0.0.0.0"
-  ],
-  "nut": {
-    "mode": "netserver"
-  }
+  "mode": "netserver",
+  "shutdown_hassio": "false"
 }
 ```
+
+**Note**: _This is just an example, don't copy and paste it! Create your own!_
 
 ### Option: `log_level`
 
@@ -163,7 +160,8 @@ The list of actions is expected to grow in the future.
 #### Sub-option: `upsmon`
 
 Add the necessary actions for a `upsmon` process to work. This is either set to
-`master` or `slave`.
+`master` or `slave`. If creating an account for a `netclient` setup to connect
+this should be set to `slave`.
 
 ### Option: `devices`
 
@@ -236,59 +234,39 @@ using a combination of the `vendor`, `product`, `serial`, `vendorid`, and
   ...
 ```
 
-### Option: `upsd`
+#### Option: `mode`
 
-A list of configuration options for the `upsd` server. Most users will only
-need to use the `LISTEN <interface> <port>` option.
+Recognized values are `netserver` and `netclient`.
 
-_Refer to the [`upsd.conf(5)`][upsd-conf] documentation for more information._
+- `netserver`: Runs the components needed to manage a locally connected UPS and
+  allow other clients to connect (either as slaves or for management).
+- `netclient`: Only runs `upsmon` to connect to a remote system running as
+  `netserver`.
 
-### Option: `nut`
+#### Option: `shutdown_hassio`
 
-A set of configuration options for NUT. It is recommended that you do not
-change these options unless you know what you are doing.
+When this option is set to `True` on a UPS shutdown command, the Hassio system
+will be shutdown. When set to `False` only the addon will be stopped. This is to
+allow testing without impact to the system.
 
-_Refer to the [`nut.conf(5)`][nut-conf] documentation for more information._
+#### Option: `remote_ups_name`
 
-#### Sub-option: `mode`
+When running in `netclient` mode, the name of the remote UPS.
 
-Recognized values are `none`, `standalone`, `netserver` and `netclient`.
+#### Option: `remote_ups_host`
 
-- `none`: Indicates that NUT should not get started automatically, possibly
-  because it is not configured or that an Integrated Power Management or some
-  external system, is used to startup the NUT components.
-- `standalone`: Addresses a local only configuration, with 1 UPS protecting
-  the local system. This implies to start the 3 NUT layers (driver, `upsd`
-  and `upsmon`), with the related configuration files. This mode can also
-  address UPS redundancy.
-- `netserver`: Like the `standalone` configuration, but also possibly need one
-  or more specific `LISTEN` options in `upsd` section. Since this mode is open
-  to the network, a special care should be applied to security concerns.
-- `netclient`: When only `upsmon` is required, possibly because there are
-  other hosts that are more closely attached to the UPS, the mode should be
-  set to `netclient`.
+When running in `netclient` mode, the host of the remote UPS.
 
-#### Sub-option: `upsd_options`
+#### Option: `remote_ups_user`
 
-Set `upsd` specific options. See [`upsd(8)`][upsd] for more details. It is
-ignored when `mode` above indicates that no `upsd` should be running.
+When running in `netclient` mode, the user of the remote UPS.
 
-#### Sub-option: `upsmon_options`
+#### Option: `remote_ups_password`
 
-Set `upsmon` specific options. See [`upsmon(8)`][upsmon] for more details. It
-is ignored when `mode` above indicates that no `upsmon` should be running.
+When running in `netclient` mode, the password of the remote UPS.
 
-#### Sub-option: `poweroff_wait`
-
-At the end of an emergency system halt, the `upsmon` master will signal the UPS
-to switch off. This may fail for a number of reasons. Most notably is the case
-that mains power returns during the shutdown process. The system will wait this
-long for the UPS to cut power, and then reboot. It should be long enough to
-exhaust the batteries, in case line power continues to be unavailable. On the
-other hand, it should not be so long that the system remains offline for an
-unreasonable amount of time if line power has returned. See [`sleep(1)`][sleep]
-for compatible time syntax. If you specify the time in seconds, use the `s`
-suffix.
+**Note**: _When using the remote option, the user and device options must still
+be present, however they will have no effect_
 
 ### Option: `i_like_to_be_pwned`
 
