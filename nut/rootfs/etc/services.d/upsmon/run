@@ -1,0 +1,10 @@
+#!/usr/bin/with-contenv bashio
+# ==============================================================================
+# Community Hass.io Add-ons: Network UPS Tools
+# Run upsmon
+# ==============================================================================
+if bashio::config.equals 'mode' 'netserver' ;then
+    bashio::net.wait_for 3493
+fi
+bashio::log.info "Starting the UPS Monitor..."
+exec upsmon -D
