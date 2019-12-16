@@ -3,7 +3,6 @@
 # Community Hass.io Add-ons: Network UPS Tools
 # Run upsd
 # ==============================================================================
-
 if bashio::config.equals 'mode' 'netserver' ;then
     bashio::log.info "Starting the UPS information server..."
     exec upsd -D

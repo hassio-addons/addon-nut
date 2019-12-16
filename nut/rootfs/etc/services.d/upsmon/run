@@ -6,5 +6,6 @@
 if bashio::config.equals 'mode' 'netserver' ;then
     bashio::net.wait_for 3493
 fi
-bashio::log.info "Starting the UPS Monitor..."
+
+bashio::log.info "Starting the UPS monitor and shutdown controller..."
 exec upsmon -D
