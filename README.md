@@ -74,7 +74,7 @@ comparison to installing any other Hass.io add-on.
 
 ## Configuration
 
-The add-on can be used with the basic configuration, with over options for more
+The add-on can be used with the basic configuration, with other options for more
 advanced users.
 
 **Note**: _Remember to restart the add-on when the configuration is changed._
