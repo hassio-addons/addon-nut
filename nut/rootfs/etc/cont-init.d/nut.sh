@@ -82,9 +82,13 @@ if bashio::config.equals 'mode' 'netserver' ;then
                 echo "  port = ${upsport}"
             } >> /etc/nut/ups.conf
 
+        OIFS=$IFS
+        IFS=$'\n'
         for configitem in $(bashio::config "devices[${device}].config"); do
+            bashio::log.info "${configitem}"
             echo "  ${configitem}" >> /etc/nut/ups.conf
         done
+        IFS="$OIFS"
 
         echo "MONITOR ${upsname}@localhost 1 upsmonmaster ${upsmonpwd} master" \
             >> /etc/nut/upsmon.conf
