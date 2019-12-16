@@ -7,8 +7,13 @@ COPY rootfs /
 
 # Setup base
 RUN \
-    apk add --no-cache nut@edge=2.7.4-r6 \
-    && rm -fr /etc/nut/*.apk-new
+    apk add --no-cache \
+        hwids@edge=20191025-r0 \
+        usbutils@edge=012-r1 \
+        nut@edge=2.7.4-r6 \
+    \
+    && rm -f -r \
+        /etc/nut/*.apk-new
 
 # Build arguments
 ARG BUILD_ARCH

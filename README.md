@@ -74,7 +74,7 @@ comparison to installing any other Hass.io add-on.
 
 ## Configuration
 
-The addon can be used with the basic configuration, with over options for more
+The add-on can be used with the basic configuration, with over options for more
 advanced users.
 
 **Note**: _Remember to restart the add-on when the configuration is changed._
@@ -245,9 +245,16 @@ Recognized values are `netserver` and `netclient`.
 
 #### Option: `shutdown_hassio`
 
-When this option is set to `True` on a UPS shutdown command, the Hassio system
-will be shutdown. When set to `False` only the addon will be stopped. This is to
+When this option is set to `true` on a UPS shutdown command, the Hassio system
+will be shutdown. When set to `false` only the add-on will be stopped. This is to
 allow testing without impact to the system.
+
+#### Option: `list_usb_devices`
+
+When this option is set to `true`, a list of connected USB devices will be
+displayed in the add-on log when the add-on starts up. This option can be used
+to help identify different UPS devices when multiple UPS devices are connected
+to the system.
 
 #### Option: `remote_ups_name`
 

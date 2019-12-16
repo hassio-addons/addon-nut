@@ -18,6 +18,11 @@ nutmode=$(bashio::config 'mode')
 bashio::log.info "Setting mode to ${nutmode}..."
 sed -i "s#%%nutmode%%#${nutmode}#g" /etc/nut/nut.conf
 
+if bashio::config.true 'list_usb_devices' ;then
+    bashio::log.info "Connected USB devices:"
+    lsusb
+fi
+
 if bashio::config.equals 'mode' 'netserver' ;then
 
     bashio::log.info "Generating ${USERS_CONF}..."
@@ -76,7 +81,7 @@ if bashio::config.equals 'mode' 'netserver' ;then
                 echo "  driver = ${upsdriver}"
                 echo "  port = ${upsport}"
             } >> /etc/nut/ups.conf
-        
+
         for configitem in $(bashio::config "devices[${device}].config"); do
             echo "  ${configitem}" >> /etc/nut/ups.conf
         done

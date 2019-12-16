@@ -64,8 +64,9 @@
         "config": ["str"]
       }
     ],
-    "shutdown_hassio": "bool",
     "mode": "match(^(netserver|netclient)$)",
+    "shutdown_hassio": "bool",
+    "list_usb_devices": "bool?",
     "remote_ups_name": "str?",
     "remote_ups_host": "str?",
     "remote_ups_password": "str?",
