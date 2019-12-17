@@ -85,7 +85,6 @@ if bashio::config.equals 'mode' 'netserver' ;then
         OIFS=$IFS
         IFS=$'\n'
         for configitem in $(bashio::config "devices[${device}].config"); do
-            bashio::log.info "${configitem}"
             echo "  ${configitem}" >> /etc/nut/ups.conf
         done
         IFS="$OIFS"
