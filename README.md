@@ -275,6 +275,11 @@ When running in `netclient` mode, the password of the remote UPS.
 **Note**: _When using the remote option, the user and device options must still
 be present, however they will have no effect_
 
+#### Option: `upsd_maxage`
+
+Allows setting the MAXAGE value in upsd.conf to increase the timeout for
+specific drivers, should not be changed for the majority of users.
+
 ### Option: `i_like_to_be_pwned`
 
 Adding this option to the add-on configuration allows to you bypass the
