@@ -71,6 +71,7 @@
     "remote_ups_host": "str?",
     "remote_ups_password": "str?",
     "remote_ups_user": "str?",
+    "upsd_maxage": "int?",
     "i_like_to_be_pwned": "bool?",
     "leave_front_door_open": "bool?"
   }

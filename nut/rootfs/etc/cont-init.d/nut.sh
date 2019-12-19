@@ -4,6 +4,7 @@
 # Configures Network UPS Tools
 # ==============================================================================
 readonly USERS_CONF=/etc/nut/upsd.users
+readonly UPSD_CONF=/etc/nut/upsd.conf
 declare upsmonpwd
 declare nutmode
 declare shutdowncmd
@@ -68,6 +69,11 @@ if bashio::config.equals 'mode' 'netserver' ;then
             echo "  upsmon ${upsmon}" >> "${USERS_CONF}"
         fi
     done
+
+    if bashio::config.has_value "upsd_maxage"; then
+        maxage=$(bashio::config "upsd_maxage")
+        echo "MAXAGE ${maxage}" >> "${UPSD_CONF}"
+    fi
 
     for device in $(bashio::config "devices|keys"); do
 
