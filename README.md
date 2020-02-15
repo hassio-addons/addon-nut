@@ -381,7 +381,7 @@ SOFTWARE.
 [releases-shield]: https://img.shields.io/github/release/hassio-addons/addon-nut.svg
 [releases]: https://github.com/hassio-addons/addon-nut/releases
 [repository]: https://github.com/hassio-addons/repository
-[semver]: https://semver.org/spec/v2.0.0.html
+[semver]: https://semver.org/spec/v2.0.0
 [sleep]: https://linux.die.net/man/1/sleep
 [ups-conf]: https://networkupstools.org/docs/man/ups.conf.html
 [ups-fields]: https://networkupstools.org/docs/man/ups.conf.html#_ups_fields
