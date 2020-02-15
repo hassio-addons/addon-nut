@@ -7,6 +7,6 @@
 readonly NOTIFYMSG=${1}
 
 curl -sS -X "POST" \
-    -H "Authorization: Bearer ${HASSIO_TOKEN}" \
+    -H "Authorization: Bearer ${SUPERVISOR_TOKEN}" \
     --data-binary "{\"ups_name\":\"${UPSNAME}\",\"notify_type\":\"${NOTIFYTYPE}\",\"notify_msg\":\"${NOTIFYMSG}\"}" \
-    "http://hassio/homeassistant/api/events/nut.ups_event"
+    "http://supervisor/core/api/events/nut.ups_event"

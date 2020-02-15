@@ -5,5 +5,5 @@
 # ==============================================================================
 
 curl -sS -X "POST" \
-     -H "X-HASSIO-KEY: ${HASSIO_TOKEN}" \
+     -H "X-Supervisor-Token: ${SUPERVISOR_TOKEN}" \
      "http://hassio/host/shutdown"
