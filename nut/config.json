@@ -5,13 +5,7 @@
   "description": "Manage battery backup (UPS) devices",
   "url": "https://github.com/hassio-addons/addon-nut",
   "startup": "system",
-  "arch": [
-    "aarch64",
-    "amd64",
-    "armhf",
-    "armv7",
-    "i386"
-  ],
+  "arch": ["aarch64", "amd64", "armhf", "armv7", "i386"],
   "boot": "auto",
   "hassio_api": true,
   "hassio_role": "manager",
@@ -22,9 +16,7 @@
   "ports_description": {
     "3493/tcp": "Network UPS Tools"
   },
-  "devices": [
-    "/dev/bus/usb:/dev/bus/usb:rwm"
-  ],
+  "devices": ["/dev/bus/usb:/dev/bus/usb:rwm"],
   "options": {
     "users": [
       {
@@ -46,14 +38,14 @@
     "shutdown_hassio": "false"
   },
   "schema": {
-    "log_level": "match(^(trace|debug|info|notice|warning|error|fatal)$)?",
+    "log_level": "list(trace|debug|info|notice|warning|error|fatal)?",
     "users": [
       {
         "username": "str",
-        "password": "str",
+        "password": "password",
         "instcmds": ["str"],
         "actions": ["str"],
-        "upsmon": "match(^(master|slave)$)?"
+        "upsmon": "list(master|slave)?"
       }
     ],
     "devices": [
@@ -64,12 +56,12 @@
         "config": ["str"]
       }
     ],
-    "mode": "match(^(netserver|netclient)$)",
+    "mode": "list(netserver|netclient)",
     "shutdown_hassio": "bool",
     "list_usb_devices": "bool?",
     "remote_ups_name": "str?",
     "remote_ups_host": "str?",
-    "remote_ups_password": "str?",
+    "remote_ups_password": "password?",
     "remote_ups_user": "str?",
     "upsd_maxage": "int?",
     "i_like_to_be_pwned": "bool?",
