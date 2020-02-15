@@ -81,29 +81,20 @@ advanced users.
 
 Network UPS Tools add-on configuration:
 
-```json
-{
-  "users": [
-    {
-      "username": "nutty",
-      "password": "changeme",
-      "instcmds": [
-        "all"
-      ],
-      "actions": []
-    }
-  ],
-  "devices": [
-    {
-      "name": "myups",
-      "driver": "usbhid-ups",
-      "port": "auto",
-      "config": []
-    }
-  ],
-  "mode": "netserver",
-  "shutdown_hassio": "false"
-}
+```yaml
+users:
+  - username: nutty
+    password: changeme
+    instcmds:
+      - all
+    actions: []
+devices:
+  - name: myups
+    driver: usbhid-ups
+    port: auto
+    config: []
+mode: netserver
+shutdown_hassio: 'false'
 ```
 
 **Note**: _This is just an example, don't copy and paste it! Create your own!_
@@ -194,44 +185,28 @@ A list of additional [options][ups-fields] to configure for this UPS. The common
 using a combination of the `vendor`, `product`, `serial`, `vendorid`, and
 `productid` options:
 
-```json
-{
-  ...
-  "devices": [
-    {
-      "name": "mge",
-      "driver": "usbhid-ups",
-      "port": "auto",
-      "config": [
-        "vendorid = 0463"
-      ]
-    },
-    {
-      "name": "apcups",
-      "driver": "usbhid-ups",
-      "port": "auto",
-      "config": [
-        "vendorid = 051d*"
-      ]
-    },
-    {
-      "name": "foocorp",
-      "driver": "usbhid-ups",
-      "port": "auto",
-      "config": [
-        "vendor = \"Foo.Corporation.*\""
-      ]
-    },
-    {
-      "name": "smartups",
-      "driver": "usbhid-ups",
-      "port": "auto",
-      "config": [
-        "product = \".*(Smart|Back)-?UPS.*\""
-      ]
-    }
-  ],
-  ...
+```yaml
+devices:
+  - name: mge
+    driver: usbhid-ups
+    port: auto
+    config:
+      - vendorid = 0463
+  - name: apcups
+    driver: usbhid-ups
+    port: auto
+    config:
+      - vendorid = 051d*
+  - name: foocorp
+    driver: usbhid-ups
+    port: auto
+    config:
+      - vendor = "Foo.Corporation.*"
+  - name: smartups
+    driver: usbhid-ups
+    port: auto
+    config:
+      - product = ".*(Smart|Back)-?UPS.*"
 ```
 
 #### Option: `mode`
