@@ -53,7 +53,7 @@ labels:
   # Additional markers
   - name: "Security"
     color: ee0701
-    description: "Marks a security issues that needs to be resolved asap."
+    description: "Marks a security issue that needs to be resolved asap."
   - name: "Idea"
     color: fef2c0
     description: "Marks an idea, which might be excepted and implemented."
