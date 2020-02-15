@@ -1,6 +1,6 @@
 #!/bin/bash
 # ==============================================================================
-# Community Hass.io Add-ons: Network UPS Tools
+# Home Assistant Community Add-on: Network UPS Tools
 # Script to shutdown Hassio from UPS Shutdowm Command
 # ==============================================================================
 

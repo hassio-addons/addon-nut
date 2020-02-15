@@ -1,6 +1,6 @@
 #!/usr/bin/with-contenv bashio
 # ==============================================================================
-# Community Hass.io Add-ons: Network UPS Tools
+# Home Assistant Community Add-on: Network UPS Tools
 # Configures Network UPS Tools for Client Mode only
 # ==============================================================================
 declare -a CONF_ENTRIES=("name" "host" "password" "user")

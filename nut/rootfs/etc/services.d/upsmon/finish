@@ -1,6 +1,6 @@
 #!/usr/bin/execlineb -S0
 # ==============================================================================
-# Community Hass.io Add-ons: Network UPS Tools
+# Home Assistant Community Add-on: Network UPS Tools
 # Take down the S6 supervision tree when upsd fails
 # ==============================================================================
 if -n { s6-test $# -ne 0 }

@@ -1,4 +1,4 @@
-# Community Hass.io Add-ons: Network UPS Tools
+# Home Assistant Community Add-on: Network UPS Tools
 
 [![GitHub Release][releases-shield]][releases]
 ![Project Stage][project-stage-shield]
@@ -60,17 +60,15 @@ see the [NUT Sensor documentation][nut-sensor-docs].
 ## Installation
 
 The installation of this add-on is pretty straightforward and not different in
-comparison to installing any other Hass.io add-on.
+comparison to installing any other Home Assistant add-on.
 
-1. [Add our Hass.io add-ons repository][repository] to your Hass.io instance.
+1. Search for the "Network UPS Tools" add-on in the Home Assistant add-on store
+   and install it.
 1. Install the "Network UPS Tools" add-on.
 1. Configure the `users` and `devices` options.
 1. Start the "Network UPS Tools" add-on.
 1. Check the logs of the "Network UPS Tools" add-on to see if everything went well.
 1. Configure [NUT Sensor][nut-sensor-docs] in your `configuration.yaml` file.
-
-**NOTE**: Do not add this repository to Hass.io, please use:
-`https://github.com/hassio-addons/repository`.
 
 ## Configuration
 
@@ -292,7 +290,7 @@ Got questions?
 
 You have several options to get them answered:
 
-- The [Community Hass.io Add-ons Discord chat server][discord] for add-on
+- The [Home Assistant Community Add-ons Discord chat server][discord] for add-on
   support and feature requests.
 - The [Home Assistant Discord chat server][discord-ha] for general Home
   Assistant discussions and questions.
@@ -318,11 +316,11 @@ The original setup of this repository is by [Dale Higgs][dale3h].
 For a full list of all authors and contributors,
 check [the contributor's page][contributors].
 
-## We have got some Hass.io add-ons for you
+## We have got some Home Assistant add-ons for you
 
-Want some more functionality to your Hass.io Home Assistant instance?
+Want some more functionality to your Home Assistant instance?
 
-We have created multiple add-ons for Hass.io. For a full list, check out
+We have created multiple add-ons for Home Assistant. For a full list, check out
 our [GitHub Repository][repository].
 
 ## License

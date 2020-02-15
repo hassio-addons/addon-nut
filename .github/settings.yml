@@ -1,8 +1,8 @@
 ---
 repository:
-  description: "Network UPS Tools - Community Hass.io Add-on for Home Assistant"
+  description: "Network UPS Tools - Home Assistant Community Add-ons"
   homepage: https://addons.community
-  topics: nut, network-ups-tools, ups, battery-backup, hassio-addons, hassio, hass, home-assistant, homeassistant, home-automation
+  topics: nut, network-ups-tools, ups, battery-backup, addon, addons, home-assistant, homeassistant
   private: false
   has_issues: true
   has_projects: false
