@@ -57,6 +57,56 @@ sensor:
 For more information on how to configure the NUT Sensor in Home Assistant
 see the [NUT Sensor documentation][nut-sensor-docs].
 
+## Event Notifications
+
+Whenever your UPS changes state, an event named `nut.ups_event` will be fired. It's payload looks like this:
+
+| Key           | Value                                        |
+|---------------|----------------------------------------------|
+| `ups_name`    | The name of the UPS as you configured it     |
+| `notify_type` | The type of notification                     |
+| `notify_msg`  | The NUT default message for the notification |
+
+`notify_type` signifies what kind of notification it is.
+See the below table for more information as well as the message that will be in `notify_msg`.
+`%s` is automatically replaced by NUT with your UPS name.
+
+| Type       | Cause                                                                 | Default Message                                    |
+|------------|-----------------------------------------------------------------------|----------------------------------------------------|
+| `ONLINE`   | UPS is back online                                                    | "UPS %s on line power"                             |
+| `ONBATT`   | UPS is on battery                                                     | "UPS %s on battery"                                |
+| `LOWBATT`  | UPS has a low battery (if also on battery, it's "critical")           | "UPS %s battery is low"                            |
+| `FSD`      | UPS is being shutdown by the master (FSD = "Forced Shutdown")         | "UPS %s: forced shutdown in progress"              |
+| `COMMOK`   | Communications established with the UPS                               | "Communications with UPS %s established"           |
+| `COMMBAD`  | Communications lost to the UPS                                        | "Communications with UPS %s lost"                  |
+| `SHUTDOWN` | The system is being shutdown                                          | "Auto logout and shutdown proceeding"              |
+| `REPLBATT` | The UPS battery is bad and needs to be replaced                       | "UPS %s battery needs to be replaced"              |
+| `NOCOMM`   | A UPS is unavailable (can't be contacted for monitoring)              | "UPS %s is unavailable"                            |
+| `NOPARENT` | The process that shuts down the system has died (shutdown impossible) | "upsmon parent process died - shutdown impossible" |
+
+This event allows you to create automations to do things like send a [critical notification](critical-notif) to your phone:
+
+```yaml
+automations:
+  - alias: 'UPS changed state'
+    trigger:
+    - platform: event
+      event_type: nut.ups_event
+    action:
+    - service: notify.mobile_app_<your_device_id_here>
+      data_template:
+        title: "UPS changed state"
+        message: "{{ trigger.event.data.notify_msg }}"
+        data:
+          push:
+            sound:
+              name: default
+              critical: 1
+              volume: 1.0
+```
+
+For more information, see the NUT docs [here](nut-notif-doc-1) and [here](nut-notif-doc-2).
+
 ## Installation
 
 The installation of this add-on is pretty straightforward and not different in
@@ -356,6 +406,7 @@ SOFTWARE.
 [commits-shield]: https://img.shields.io/github/commit-activity/y/hassio-addons/addon-nut.svg
 [commits]: https://github.com/hassio-addons/addon-nut/commits/master
 [contributors]: https://github.com/hassio-addons/addon-nut/graphs/contributors
+[critical-notif]: https://companion.home-assistant.io/docs/notifications/critical-notifications
 [dale3h]: https://github.com/dale3h
 [discord-ha]: https://discord.gg/c5DvZ4e
 [discord-shield]: https://img.shields.io/discord/478094546522079232.svg
@@ -374,6 +425,8 @@ SOFTWARE.
 [nut-compatible]: https://networkupstools.org/stable-hcl.html
 [nut-conf]: https://networkupstools.org/docs/man/nut.conf.html
 [nut-features]: https://networkupstools.org/features.html
+[nut-notif-doc-1]: https://networkupstools.org/docs/user-manual.chunked/ar01s07.html
+[nut-notif-doc-2]: https://networkupstools.org/docs/man/upsmon.conf.html
 [nut-sensor-docs]: https://www.home-assistant.io/components/sensor.nut/
 [nutupsdrv]: https://networkupstools.org/docs/man/nutupsdrv.html
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-experimental-yellow.svg
