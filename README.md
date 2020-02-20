@@ -272,7 +272,8 @@ only exposed to your internal network. USE AT YOUR OWN RISK!_
 
 ## Event Notifications
 
-Whenever your UPS changes state, an event named `nut.ups_event` will be fired. It's payload looks like this:
+Whenever your UPS changes state, an event named `nut.ups_event` will be fired.
+It's payload looks like this:
 
 | Key           | Value                                        |
 |---------------|----------------------------------------------|
@@ -281,8 +282,8 @@ Whenever your UPS changes state, an event named `nut.ups_event` will be fired. I
 | `notify_msg`  | The NUT default message for the notification |
 
 `notify_type` signifies what kind of notification it is.
-See the below table for more information as well as the message that will be in `notify_msg`.
-`%s` is automatically replaced by NUT with your UPS name.
+See the below table for more information as well as the message that will be in
+`notify_msg`. `%s` is automatically replaced by NUT with your UPS name.
 
 | Type       | Cause                                                                 | Default Message                                    |
 |------------|-----------------------------------------------------------------------|----------------------------------------------------|
@@ -297,7 +298,8 @@ See the below table for more information as well as the message that will be in 
 | `NOCOMM`   | A UPS is unavailable (can't be contacted for monitoring)              | "UPS %s is unavailable"                            |
 | `NOPARENT` | The process that shuts down the system has died (shutdown impossible) | "upsmon parent process died - shutdown impossible" |
 
-This event allows you to create automations to do things like send a [critical notification](critical-notif) to your phone:
+This event allows you to create automations to do things like send a
+[critical notification](critical-notif) to your phone:
 
 ```yaml
 automations:
@@ -318,7 +320,8 @@ automations:
               volume: 1.0
 ```
 
-For more information, see the NUT docs [here](nut-notif-doc-1) and [here](nut-notif-doc-2).
+For more information, see the NUT docs [here](nut-notif-doc-1) and
+[here](nut-notif-doc-2).
 
 ## Changelog & Releases
 
