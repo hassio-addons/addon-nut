@@ -299,7 +299,7 @@ See the below table for more information as well as the message that will be in
 | `NOPARENT` | The process that shuts down the system has died (shutdown impossible) | "upsmon parent process died - shutdown impossible" |
 
 This event allows you to create automations to do things like send a
-[critical notification](critical-notif) to your phone:
+[critical notification][critical-notif] to your phone:
 
 ```yaml
 automations:
@@ -320,8 +320,8 @@ automations:
               volume: 1.0
 ```
 
-For more information, see the NUT docs [here](nut-notif-doc-1) and
-[here](nut-notif-doc-2).
+For more information, see the NUT docs [here][nut-notif-doc-1] and
+[here][nut-notif-doc-2].
 
 ## Changelog & Releases
 
