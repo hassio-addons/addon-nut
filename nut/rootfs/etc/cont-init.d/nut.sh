@@ -103,14 +103,14 @@ if bashio::config.equals 'mode' 'netserver' ;then
     if bashio::config.true "fake_usb_devices"; then
         bashio::log.info "Faking USB devices for Cyber Power fix..."
 
-        for ((b = 1;b <= 4;b++))
+        for ((b = 1; b <= 4; b++))
         {
-            bbb=$(printf "%03d" $b)
-            mkdir -p /dev/bus/usb/$bbb
+            bbb=$(printf "%03d" "${b}")
+            mkdir -p "/dev/bus/usb/${bbb}"
             for ((d = 1;d <= 127;d++))
             {
-                ddd=$(printf "%03d" $d)
-                mknod /dev/bus/usb/$bbb/$ddd c 189 $((($b - 1) * 128 + ($d - 1))) || true
+                ddd=$(printf "%03d" "${d}")
+                mknod "/dev/bus/usb/${bbb}/${ddd}" c 189 $(((b - 1) * 128 + (d - 1))) || true
             }
         }
     fi
