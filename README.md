@@ -248,6 +248,12 @@ When running in `netclient` mode, the password of the remote UPS.
 **Note**: _When using the remote option, the user and device options must still
 be present, however they will have no effect_
 
+#### Option: `fake_usb_devices`
+
+Creates fake USB devices to fix problems with Cyber Power UPSes.
+Only enable this if you sure you are affected.
+[More info](fake-usb)
+
 #### Option: `upsd_maxage`
 
 Allows setting the MAXAGE value in upsd.conf to increase the timeout for
@@ -415,6 +421,7 @@ SOFTWARE.
 [discord-shield]: https://img.shields.io/discord/478094546522079232.svg
 [discord]: https://discord.me/hassioaddons
 [dockerhub]: https://hub.docker.com/r/hassioaddons/nut
+[fake-usb]: https://github.com/hassio-addons/addon-nut/issues/24
 [forum-shield]: https://img.shields.io/badge/community-forum-brightgreen.svg
 [forum]: https://community.home-assistant.io/t/community-hass-io-add-on-network-ups-tools/68516
 [gitlabci-shield]: https://gitlab.com/hassio-addons/addon-nut/badges/master/pipeline.svg
