@@ -37,4 +37,4 @@ LABEL \
     org.label-schema.usage="https://github.com/hassio-addons/addon-nut/tree/master/README.md" \
     org.label-schema.vcs-ref=${BUILD_REF} \
     org.label-schema.vcs-url="https://github.com/hassio-addons/addon-nut" \
-    org.label-schema.vendor="Community Hass.io Addons"
+    org.label-schema.vendor="Home Assistant Community Addons"

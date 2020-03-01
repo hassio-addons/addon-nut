@@ -1,9 +1,6 @@
-#!/bin/bash
+#!/usr/bin/with-contenv bashio
 # ==============================================================================
 # Home Assistant Community Add-on: Network UPS Tools
-# Script to shutdown Hassio from UPS Shutdowm Command
+# Script to shutdown the host from UPS Shutdown Command
 # ==============================================================================
-
-curl -sS -X "POST" \
-     -H "X-Supervisor-Token: ${SUPERVISOR_TOKEN}" \
-     "http://hassio/host/shutdown"
+bashio::host.shutdown

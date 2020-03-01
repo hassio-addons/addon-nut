@@ -5,15 +5,11 @@
 # ==============================================================================
 readonly USERS_CONF=/etc/nut/upsd.users
 readonly UPSD_CONF=/etc/nut/upsd.conf
-declare upsmonpwd
 declare nutmode
-declare shutdowncmd
-declare username
 declare password
-
-# Fix permissions
-chmod -R 660 /etc/nut/*
-chown -R root:nut /etc/nut/*
+declare shutdowncmd
+declare upsmonpwd
+declare username
 
 nutmode=$(bashio::config 'mode')
 bashio::log.info "Setting mode to ${nutmode}..."
@@ -25,20 +21,18 @@ if bashio::config.true 'list_usb_devices' ;then
 fi
 
 if bashio::config.equals 'mode' 'netserver' ;then
-
     bashio::log.info "Generating ${USERS_CONF}..."
+
     # Create Monitor User
     upsmonpwd=$(shuf -ze -n20  {A..Z} {a..z} {0..9}|tr -d '\0')
-
-        {
-            echo
-            echo "[upsmonmaster]"
-            echo "  password = ${upsmonpwd}"
-            echo "  upsmon master"
-        } >> "${USERS_CONF}"
+    {
+        echo
+        echo "[upsmonmaster]"
+        echo "  password = ${upsmonpwd}"
+        echo "  upsmon master"
+    } >> "${USERS_CONF}"
 
     for user in $(bashio::config "users|keys"); do
-
         bashio::config.require.username "users[${user}].username"
         username=$(bashio::config "users[${user}].username")
 
@@ -76,17 +70,17 @@ if bashio::config.equals 'mode' 'netserver' ;then
     fi
 
     for device in $(bashio::config "devices|keys"); do
-
         upsname=$(bashio::config "devices[${device}].name")
         upsdriver=$(bashio::config "devices[${device}].driver")
         upsport=$(bashio::config "devices[${device}].port")
+
         bashio::log.info "Configuring Device named ${upsname}..."
-            {
-                echo
-                echo "[${upsname}]"
-                echo "  driver = ${upsdriver}"
-                echo "  port = ${upsport}"
-            } >> /etc/nut/ups.conf
+        {
+            echo
+            echo "[${upsname}]"
+            echo "  driver = ${upsdriver}"
+            echo "  port = ${upsport}"
+        } >> /etc/nut/ups.conf
 
         OIFS=$IFS
         IFS=$'\n'
@@ -97,7 +91,6 @@ if bashio::config.equals 'mode' 'netserver' ;then
 
         echo "MONITOR ${upsname}@localhost 1 upsmonmaster ${upsmonpwd} master" \
             >> /etc/nut/upsmon.conf
-
     done
 
     if bashio::config.true "fake_usb_devices"; then
@@ -122,13 +115,12 @@ if bashio::config.equals 'mode' 'netserver' ;then
     else
         upsdrvctl start
     fi
-
 fi
 
 shutdowncmd="halt"
-if bashio::config.true 'shutdown_hassio'; then
-    bashio::log.warning "UPS Shutdown will shutdown Hassio"
-    shutdowncmd="/usr/bin/shutdownhassio"
+if bashio::config.true 'shutdown_host'; then
+    bashio::log.warning "UPS Shutdown will shutdown the host"
+    shutdowncmd="/usr/bin/shutdownhost"
 fi
 
 echo "SHUTDOWNCMD  ${shutdowncmd}" >> /etc/nut/upsmon.conf

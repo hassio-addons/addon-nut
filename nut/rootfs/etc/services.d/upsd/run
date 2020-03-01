@@ -3,7 +3,9 @@
 # Home Assistant Community Add-on: Network UPS Tools
 # Run upsd
 # ==============================================================================
-if bashio::config.equals 'mode' 'netserver' ;then
-    bashio::log.info "Starting the UPS information server..."
-    exec upsd -D
+if ! bashio::config.equals 'mode' 'netserver' ;then
+    exec sleep 864000
 fi
+
+bashio::log.info "Starting the UPS information server..."
+exec upsd -D

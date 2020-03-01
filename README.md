@@ -20,7 +20,7 @@
 [![Buy me a coffee][buymeacoffee-shield]][buymeacoffee]
 
 A Network UPS Tools daemon to allow you to easily manage battery backup (UPS)
-devices connected to your Hass.io machine.
+devices connected to your Home Assistant machine.
 
 ## About
 
@@ -92,7 +92,7 @@ devices:
     port: auto
     config: []
 mode: netserver
-shutdown_hassio: 'false'
+shutdown_host: 'false'
 ```
 
 **Note**: _This is just an example, don't copy and paste it! Create your own!_
@@ -216,9 +216,9 @@ Recognized values are `netserver` and `netclient`.
 - `netclient`: Only runs `upsmon` to connect to a remote system running as
   `netserver`.
 
-#### Option: `shutdown_hassio`
+#### Option: `shutdown_host`
 
-When this option is set to `true` on a UPS shutdown command, the Hassio system
+When this option is set to `true` on a UPS shutdown command, the host system
 will be shutdown. When set to `false` only the add-on will be stopped. This is to
 allow testing without impact to the system.
 
