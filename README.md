@@ -20,7 +20,7 @@
 [![Buy me a coffee][buymeacoffee-shield]][buymeacoffee]
 
 A Network UPS Tools daemon to allow you to easily manage battery backup (UPS)
-devices connected to your Hass.io machine.
+devices connected to your Home Assistant machine.
 
 ## About
 
