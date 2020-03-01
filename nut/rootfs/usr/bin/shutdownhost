@@ -1,6 +1,6 @@
 #!/usr/bin/with-contenv bashio
 # ==============================================================================
 # Home Assistant Community Add-on: Network UPS Tools
-# Script to shutdown the host from UPS Shutdowm Command
+# Script to shutdown the host from UPS Shutdown Command
 # ==============================================================================
 bashio::host.shutdown
