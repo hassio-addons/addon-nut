@@ -118,8 +118,8 @@ if bashio::config.equals 'mode' 'netserver' ;then
 fi
 
 shutdowncmd="halt"
-if bashio::config.true 'shutdown_hassio'; then
-    bashio::log.warning "UPS Shutdown will shutdown Hassio"
+if bashio::config.true 'shutdown_host'; then
+    bashio::log.warning "UPS Shutdown will shutdown the host"
     shutdowncmd="/usr/bin/shutdownhost"
 fi
 
