@@ -252,7 +252,7 @@ be present, however they will have no effect_
 
 Creates fake USB devices to fix problems with Cyber Power UPSes.
 Only enable this if you sure you are affected.
-[More info](fake-usb)
+[More info][fake-usb]
 
 #### Option: `upsd_maxage`
 
