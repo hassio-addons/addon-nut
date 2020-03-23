@@ -1,4 +1,6 @@
 /dev/bus/usb/*/* false root 0777 0777
+/dev/tty* false root 0777 0777
+/dev/serial/*/* false root 0777 0777
 /etc/nut/* true root:nut 0660 0660
 /usr/bin/notify false root 0755 0755
 /usr/bin/shutdownhost false root 0755 0755
