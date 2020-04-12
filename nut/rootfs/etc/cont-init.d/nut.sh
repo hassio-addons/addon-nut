@@ -119,8 +119,16 @@ fi
 
 shutdowncmd="halt"
 if bashio::config.true 'shutdown_host'; then
-    bashio::log.warning "UPS Shutdown will shutdown the host"
     shutdowncmd="/usr/bin/shutdownhost"
+    if bashio::config.true 'shutdown_ups'; then
+        bashio::log.warning "UPS Shutdown will shutdown both UPS and the host"
+        # Delete upscmd, if exists
+        sed -i "/upscmd/d" ${shutdowncmd}
+        # Add upscmd before host shutdown
+        sed -i "/bashio::host.shutdown/i upscmd -u ${username} -p ${password} ${upsname}@localhost shutdown.return" ${shutdowncmd}
+    else
+        bashio::log.warning "UPS Shutdown will shutdown the host"
+    fi
 fi
 
 echo "SHUTDOWNCMD  ${shutdowncmd}" >> /etc/nut/upsmon.conf
