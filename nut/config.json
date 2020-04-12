@@ -59,6 +59,7 @@
     ],
     "mode": "list(netserver|netclient)",
     "shutdown_host": "bool",
+    "shutdown_ups": "bool?",
     "list_usb_devices": "bool?",
     "remote_ups_name": "str?",
     "remote_ups_host": "str?",
