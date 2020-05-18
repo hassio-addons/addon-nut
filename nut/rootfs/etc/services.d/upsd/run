@@ -8,4 +8,4 @@ if ! bashio::config.equals 'mode' 'netserver' ;then
 fi
 
 bashio::log.info "Starting the UPS information server..."
-exec upsd -D
+exec upsd -D -u root
