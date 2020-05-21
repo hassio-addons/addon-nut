@@ -54,6 +54,9 @@ sensor:
       - ups.status
 ```
 
+**Note**: _The host `a0d7b954-nut` is required to allow Home Assistant to
+communicate directly with the addon_
+
 For more information on how to configure the NUT Sensor in Home Assistant
 see the [NUT Sensor documentation][nut-sensor-docs].
 
