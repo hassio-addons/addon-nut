@@ -329,6 +329,21 @@ automations:
               volume: 1.0
 ```
 
+If you are using the NUT integration in Home Assistant, then you can also use this event to trigger it to push/update the status in realtime:
+
+```yaml
+automations:
+  - alias: 'UPS Pushed State Update'
+    trigger:
+    - platform: event
+      event_type: nut.ups_event
+    action:
+    - service: homeassistant.update_entity
+      data:
+      entity_id:
+      - sensor.my_ups_status
+```
+
 For more information, see the NUT docs [here][nut-notif-doc-1] and
 [here][nut-notif-doc-2].
 
