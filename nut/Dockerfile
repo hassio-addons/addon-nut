@@ -8,6 +8,7 @@ COPY rootfs /
 # Setup base
 RUN \
     apk add --no-cache \
+        musl@edge=1.2.1-r0 \
         hwids@edge=20200306-r0 \
         usbutils@edge=012-r1 \
         nut@edge=2.7.4-r6 \
