@@ -8,9 +8,8 @@ COPY rootfs /
 # Setup base
 RUN \
     apk add --no-cache \
-        hwids@edge=20200306-r0 \
-        usbutils@edge=012-r1 \
-        nut@edge=2.7.4-r6 \
+        hwids=20200306-r0 \
+        usbutils=012-r1 \
     \
     && rm -f -r \
         /etc/nut/*.apk-new
