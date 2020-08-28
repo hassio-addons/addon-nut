@@ -48,7 +48,9 @@ RUN \
             --with-statepath=/var/run/nut \
             --with-altpidpath=/var/run/nut \
     && make install \
+    && apk del --no-cache --purge .build-dependencies \
     && rm -f -r \
+        /tmp/* \
         /etc/nut/*.apk-new
 
 # Build arguments
