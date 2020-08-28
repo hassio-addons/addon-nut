@@ -19,6 +19,35 @@ RUN \
         neon-dev=0.31.1-r0 \
         net-snmp-dev=5.8-r3 \
     \
+    && curl -J -L -o /tmp/nut.tar.gz \
+        http://www.networkupstools.org/source/2.7/nut-2.7.4.tar.gz \
+    && mkdir -p /tmp/nut \
+    && tar zxf /tmp/nut.tar.gz -C \
+        /tmp/nut --strip-components=1 \
+    && cd /tmp/nut \
+    && ./configure \
+            --prefix=/usr \
+            --libexecdir=/usr/lib/nut \
+            --without-wrap \
+            --with-user=root \
+            --with-group=root \
+            --disable-static \
+            --with-serial \
+            --with-usb \
+            --without-avahi \
+            --with-snmp \
+            --with-neon \
+            --without-powerman \
+            --without-ipmi \
+            --without-freeipmi \
+            --with-libltdl \
+            --without-cgi \
+            --with-drvpath=/usr/lib/nut \
+            --datadir=/usr/share/nut \
+            --sysconfdir=/etc/nut \
+            --with-statepath=/var/run/nut \
+            --with-altpidpath=/var/run/nut \
+    && make install \
     && rm -f -r \
         /etc/nut/*.apk-new
 
