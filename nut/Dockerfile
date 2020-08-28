@@ -2,9 +2,6 @@ ARG BUILD_FROM=hassioaddons/base:8.0.1
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}
 
-# Copy root filesystem
-COPY rootfs /
-
 # Setup base
 RUN \
     apk add --no-cache \
@@ -52,6 +49,9 @@ RUN \
     && rm -f -r \
         /tmp/* \
         /etc/nut/*.apk-new
+
+# Copy root filesystem
+COPY rootfs /
 
 # Build arguments
 ARG BUILD_ARCH
