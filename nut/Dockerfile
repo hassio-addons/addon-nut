@@ -7,6 +7,7 @@ FROM ${BUILD_FROM}
 RUN \
     apk add --no-cache \
         hwids=20200306-r0 \
+        libusb-compat=0.1.5-r4 \
         usbutils=012-r1 \
     && apk add --no-cache --virtual .build-dependencies \
         autoconf=2.69-r2 \
