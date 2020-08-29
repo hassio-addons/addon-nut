@@ -2,18 +2,56 @@ ARG BUILD_FROM=hassioaddons/base:8.0.1
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}
 
-# Copy root filesystem
-COPY rootfs /
-
 # Setup base
 RUN \
     apk add --no-cache \
-        hwids@edge=20200306-r0 \
-        usbutils@edge=012-r1 \
-        nut@edge=2.7.4-r6 \
+        hwids=20200306-r0 \
+        usbutils=012-r1 \
+    && apk add --no-cache --virtual .build-dependencies \
+        autoconf=2.69-r2 \
+        automake=1.16.2-r0 \
+        build-base=0.5-r2 \
+        libtool=2.4.6-r7 \
+        libusb-compat-dev=0.1.5-r4 \
+        neon-dev=0.31.1-r0 \
+        net-snmp-dev=5.8-r3 \
     \
+    && curl -J -L -o /tmp/nut.tar.gz \
+        http://www.networkupstools.org/source/2.7/nut-2.7.4.tar.gz \
+    && mkdir -p /tmp/nut \
+    && tar zxf /tmp/nut.tar.gz -C \
+        /tmp/nut --strip-components=1 \
+    && cd /tmp/nut \
+    && ./configure \
+            --prefix=/usr \
+            --libexecdir=/usr/lib/nut \
+            --without-wrap \
+            --with-user=root \
+            --with-group=root \
+            --disable-static \
+            --with-serial \
+            --with-usb \
+            --without-avahi \
+            --with-snmp \
+            --with-neon \
+            --without-powerman \
+            --without-ipmi \
+            --without-freeipmi \
+            --with-libltdl \
+            --without-cgi \
+            --with-drvpath=/usr/lib/nut \
+            --datadir=/usr/share/nut \
+            --sysconfdir=/etc/nut \
+            --with-statepath=/var/run/nut \
+            --with-altpidpath=/var/run/nut \
+    && make install \
+    && apk del --no-cache --purge .build-dependencies \
     && rm -f -r \
+        /tmp/* \
         /etc/nut/*.apk-new
+
+# Copy root filesystem
+COPY rootfs /
 
 # Build arguments
 ARG BUILD_ARCH
