@@ -3,6 +3,7 @@ ARG BUILD_FROM=hassioaddons/base:8.0.1
 FROM ${BUILD_FROM}
 
 # Setup base
+# hadolint ignore=DL3003
 RUN \
     apk add --no-cache \
         hwids=20200306-r0 \
