@@ -11,6 +11,7 @@ RUN \
         libusb-compat=0.1.5-r4 \
         neon=0.31.1-r0 \
         net-snmp-libs=5.8-r3 \
+        openssl=1.1.1g-r0 \
         usbutils=012-r1 \
     && apk add --no-cache --virtual .build-dependencies \
         autoconf=2.69-r2 \
