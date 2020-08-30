@@ -9,6 +9,7 @@ RUN \
         hwids=20200306-r0 \
         libtool=2.4.6-r7 \
         libusb-compat=0.1.5-r4 \
+        neon=0.31.1-r0 \
         usbutils=012-r1 \
     && apk add --no-cache --virtual .build-dependencies \
         autoconf=2.69-r2 \
