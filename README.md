@@ -10,7 +10,7 @@
 ![Supports amd64 Architecture][amd64-shield]
 ![Supports i386 Architecture][i386-shield]
 
-[![GitLab CI][gitlabci-shield]][gitlabci]
+[![Github Actions][github-actions-shield]][github-actions]
 ![Project Maintenance][maintenance-shield]
 [![GitHub Activity][commits-shield]][commits]
 
@@ -132,17 +132,17 @@ SOFTWARE.
 [buymeacoffee-shield]: https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-2.svg
 [buymeacoffee]: https://www.buymeacoffee.com/dale3h
 [commits-shield]: https://img.shields.io/github/commit-activity/y/hassio-addons/addon-nut.svg
-[commits]: https://github.com/hassio-addons/addon-nut/commits/master
+[commits]: https://github.com/hassio-addons/addon-nut/commits/main
 [contributors]: https://github.com/hassio-addons/addon-nut/graphs/contributors
 [dale3h]: https://github.com/dale3h
 [discord-ha]: https://discord.gg/c5DvZ4e
 [discord-shield]: https://img.shields.io/discord/478094546522079232.svg
 [discord]: https://discord.me/hassioaddons
-[docs]: https://github.com/hassio-addons/addon-nut/blob/master/nut/DOCS.md
+[docs]: https://github.com/hassio-addons/addon-nut/blob/main/nut/DOCS.md
 [forum-shield]: https://img.shields.io/badge/community-forum-brightgreen.svg
 [forum]: https://community.home-assistant.io/t/community-hass-io-add-on-network-ups-tools/68516
-[gitlabci-shield]: https://gitlab.com/hassio-addons/addon-nut/badges/master/pipeline.svg
-[gitlabci]: https://gitlab.com/hassio-addons/addon-nut/pipelines
+[github-actions-shield]: https://github.com/hassio-addons/addon-nut/workflows/CI/badge.svg
+[github-actions]: https://github.com/hassio-addons/addon-nut/actions
 [i386-shield]: https://img.shields.io/badge/i386-yes-green.svg
 [issue]: https://github.com/hassio-addons/addon-nut/issues
 [license-shield]: https://img.shields.io/github/license/hassio-addons/addon-nut.svg
