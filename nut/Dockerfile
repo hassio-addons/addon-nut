@@ -24,6 +24,7 @@ RUN \
     && curl -J -L -o /tmp/nut.tar.gz \
         http://www.networkupstools.org/source/2.7/nut-2.7.4.tar.gz \
     && mkdir -p /tmp/nut \
+    && mkdir -p /var/run/nut \
     && tar zxf /tmp/nut.tar.gz -C \
         /tmp/nut --strip-components=1 \
     && cd /tmp/nut \
