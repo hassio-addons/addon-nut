@@ -71,7 +71,7 @@ devices:
     port: auto
     config: []
 mode: netserver
-shutdown_host: 'false'
+shutdown_host: "false"
 ```
 
 **Note**: _This is just an example, don't copy and paste it! Create your own!_
@@ -86,7 +86,7 @@ dealing with an unknown issue. Possible values are:
 - `debug`: Shows detailed debug information.
 - `info`: Normal (usually) interesting events.
 - `warning`: Exceptional occurrences that are not errors.
-- `error`:  Runtime errors that do not require immediate action.
+- `error`: Runtime errors that do not require immediate action.
 - `fatal`: Something went terribly wrong. Add-on becomes unusable.
 
 Please note that each level automatically includes log messages from a
@@ -261,7 +261,7 @@ Whenever your UPS changes state, an event named `nut.ups_event` will be fired.
 It's payload looks like this:
 
 | Key           | Value                                        |
-|---------------|----------------------------------------------|
+| ------------- | -------------------------------------------- |
 | `ups_name`    | The name of the UPS as you configured it     |
 | `notify_type` | The type of notification                     |
 | `notify_msg`  | The NUT default message for the notification |
@@ -271,7 +271,7 @@ See the below table for more information as well as the message that will be in
 `notify_msg`. `%s` is automatically replaced by NUT with your UPS name.
 
 | Type       | Cause                                                                 | Default Message                                    |
-|------------|-----------------------------------------------------------------------|----------------------------------------------------|
+| ---------- | --------------------------------------------------------------------- | -------------------------------------------------- |
 | `ONLINE`   | UPS is back online                                                    | "UPS %s on line power"                             |
 | `ONBATT`   | UPS is on battery                                                     | "UPS %s on battery"                                |
 | `LOWBATT`  | UPS has a low battery (if also on battery, it's "critical")           | "UPS %s battery is low"                            |
@@ -288,21 +288,21 @@ This event allows you to create automations to do things like send a
 
 ```yaml
 automations:
-  - alias: 'UPS changed state'
+  - alias: "UPS changed state"
     trigger:
-    - platform: event
-      event_type: nut.ups_event
+      - platform: event
+        event_type: nut.ups_event
     action:
-    - service: notify.mobile_app_<your_device_id_here>
-      data_template:
-        title: "UPS changed state"
-        message: "{{ trigger.event.data.notify_msg }}"
-        data:
-          push:
-            sound:
-              name: default
-              critical: 1
-              volume: 1.0
+      - service: notify.mobile_app_<your_device_id_here>
+        data_template:
+          title: "UPS changed state"
+          message: "{{ trigger.event.data.notify_msg }}"
+          data:
+            push:
+              sound:
+                name: default
+                critical: 1
+                volume: 1.0
 ```
 
 For more information, see the NUT docs [here][nut-notif-doc-1] and
