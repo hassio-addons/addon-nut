@@ -9,6 +9,7 @@ RUN \
         hwids=20201207-r0 \
         libtool=2.4.6-r7 \
         libusb-compat=0.1.5-r4 \
+        openssl=1.1.1i-r0 \
         usbutils=013-r0 \
     && apk add --no-cache --virtual .build-dependencies \
         autoconf=2.69-r2 \
