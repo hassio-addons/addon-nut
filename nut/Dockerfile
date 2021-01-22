@@ -6,7 +6,7 @@ FROM ${BUILD_FROM}
 # hadolint ignore=DL3003
 RUN \
     apk add --no-cache \
-        hwids=20200306-r0 \
+        hwids=20201207-r0 \
         libtool=2.4.6-r7 \
         libusb-compat=0.1.5-r4 \
         neon=0.31.1-r0 \
