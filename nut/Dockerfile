@@ -9,10 +9,7 @@ RUN \
         hwids=20201207-r0 \
         libtool=2.4.6-r7 \
         libusb-compat=0.1.5-r4 \
-        neon=0.31.1-r0 \
-        net-snmp-libs=5.8-r3 \
-        openssl=1.1.1g-r0 \
-        usbutils=012-r1 \
+        usbutils=013-r0 \
     && apk add --no-cache --virtual .build-dependencies \
         autoconf=2.69-r2 \
         automake=1.16.2-r0 \
