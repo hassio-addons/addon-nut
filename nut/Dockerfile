@@ -14,8 +14,7 @@ RUN \
         openssl=1.1.1i-r0 \
         usbutils=013-r0 \
     && apk add --no-cache --virtual .build-dependencies \
-        autoconf=2.69-r2 \
-        automake=1.16.2-r0 \
+        autoconf=2.69-r3 \
         build-base=0.5-r2 \
         libusb-compat-dev=0.1.5-r4 \
         neon-dev=0.31.2-r0 \
