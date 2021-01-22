@@ -15,6 +15,7 @@ RUN \
         usbutils=013-r0 \
     && apk add --no-cache --virtual .build-dependencies \
         autoconf=2.69-r3 \
+        automake=1.16.3-r0 \
         build-base=0.5-r2 \
         libusb-compat-dev=0.1.5-r4 \
         neon-dev=0.31.2-r0 \
