@@ -9,6 +9,7 @@ RUN \
         hwids=20201207-r0 \
         libtool=2.4.6-r7 \
         libusb-compat=0.1.5-r4 \
+        net-snmp-libs=5.9-r1 \
         openssl=1.1.1i-r0 \
         usbutils=013-r0 \
     && apk add --no-cache --virtual .build-dependencies \
@@ -16,8 +17,7 @@ RUN \
         automake=1.16.2-r0 \
         build-base=0.5-r2 \
         libusb-compat-dev=0.1.5-r4 \
-        neon-dev=0.31.1-r0 \
-        net-snmp-dev=5.8-r3 \
+        net-snmp-dev=5.9-r1 \
     \
     && curl -J -L -o /tmp/nut.tar.gz \
         http://www.networkupstools.org/source/2.7/nut-2.7.4.tar.gz \
