@@ -111,9 +111,9 @@ if bashio::config.equals 'mode' 'netserver' ;then
     bashio::log.info "Starting the UPS drivers..."
     # Run upsdrvctl
     if bashio::debug; then
-        upsdrvctl -D start
+        upsdrvctl -u root -D start
     else
-        upsdrvctl start
+        upsdrvctl -u root start
     fi
 fi
 
