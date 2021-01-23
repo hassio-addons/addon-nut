@@ -206,7 +206,6 @@ allow testing without impact to the system.
 When this option is set to `true` along with shutdown_host to `true`, both UPS and the host system
 will be shutdown. This works in netserver mode only. USE WITH CAUTION - Before enabling please check that UPS supports `upscmd shutdown.return` and `ups.delay.shutdown` has been set.
 
-
 #### Option: `list_usb_devices`
 
 When this option is set to `true`, a list of connected USB devices will be
