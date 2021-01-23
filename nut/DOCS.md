@@ -201,6 +201,12 @@ When this option is set to `true` on a UPS shutdown command, the host system
 will be shutdown. When set to `false` only the add-on will be stopped. This is to
 allow testing without impact to the system.
 
+#### Option: `shutdown_ups`
+
+When this option is set to `true` along with shutdown_host to `true`, both UPS and the host system
+will be shutdown. This works in netserver mode only. USE WITH CAUTION - Before enabling please check that UPS supports `upscmd shutdown.return` and `ups.delay.shutdown` has been set.
+
+
 #### Option: `list_usb_devices`
 
 When this option is set to `true`, a list of connected USB devices will be
