@@ -6,7 +6,8 @@
   "url": "https://github.com/hassio-addons/addon-nut",
   "startup": "system",
   "arch": ["aarch64", "amd64", "armhf", "armv7", "i386"],
-  "auto_uart": true,
+  "uart": true,
+  "usb": true,
   "hassio_api": true,
   "hassio_role": "manager",
   "homeassistant_api": true,
@@ -16,7 +17,6 @@
   "ports_description": {
     "3493/tcp": "Network UPS Tools"
   },
-  "devices": ["/dev/bus/usb:/dev/bus/usb:rwm"],
   "options": {
     "users": [
       {
