@@ -1,62 +1,15 @@
-ARG BUILD_FROM=hassioaddons/base:8.0.6
+ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base/amd64:4.1.2
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}
 
 # Setup base
 # hadolint ignore=DL3003
 RUN \
-    apk add --no-cache \
-        hwids=20200306-r0 \
-        libcrypto1.1=1.1.1i-r0 \
-        libtool=2.4.6-r7 \
-        libssl1.1=1.1.1i-r0 \
-        libusb-compat=0.1.5-r4 \
-        neon=0.31.1-r0 \
-        net-snmp-libs=5.8-r3 \
-        openssl=1.1.1i-r0 \
-        usbutils=012-r1 \
-    && apk add --no-cache --virtual .build-dependencies \
-        autoconf=2.69-r2 \
-        automake=1.16.2-r0 \
-        build-base=0.5-r2 \
-        libusb-compat-dev=0.1.5-r4 \
-        neon-dev=0.31.1-r0 \
-        net-snmp-dev=5.8-r3 \
-    \
-    && curl -J -L -o /tmp/nut.tar.gz \
-        http://www.networkupstools.org/source/2.7/nut-2.7.4.tar.gz \
-    && mkdir -p /tmp/nut \
-    && mkdir -p /var/run/nut \
-    && tar zxf /tmp/nut.tar.gz -C \
-        /tmp/nut --strip-components=1 \
-    && cd /tmp/nut \
-    && ./configure \
-            --prefix=/usr \
-            --libexecdir=/usr/lib/nut \
-            --without-wrap \
-            --with-user=root \
-            --with-group=root \
-            --disable-static \
-            --with-serial \
-            --with-usb \
-            --without-avahi \
-            --with-snmp \
-            --with-neon \
-            --without-powerman \
-            --without-ipmi \
-            --without-freeipmi \
-            --with-libltdl \
-            --without-cgi \
-            --with-drvpath=/usr/lib/nut \
-            --datadir=/usr/share/nut \
-            --sysconfdir=/etc/nut \
-            --with-statepath=/var/run/nut \
-            --with-altpidpath=/var/run/nut \
-    && make install \
-    && apk del --no-cache --purge .build-dependencies \
-    && rm -f -r \
-        /tmp/* \
-        /etc/nut/*.apk-new
+    apt-get update \
+    && apt-get install -y --no-install-recommends\
+        nut=2.7.4-8 \
+        nut-snmp=2.7.4-8 \
+        usbutils=1:010-3
 
 # Copy root filesystem
 COPY rootfs /
