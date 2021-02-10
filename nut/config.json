@@ -12,6 +12,7 @@
   "hassio_api": true,
   "hassio_role": "manager",
   "homeassistant_api": true,
+  "privileged": ["SYS_RAWIO"],
   "ports": {
     "3493/tcp": null
   },
