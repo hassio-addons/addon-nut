@@ -1,4 +1,4 @@
-ARG BUILD_FROM=ghcr.io/hassio-addons/base/amd64:9.1.2
+ARG BUILD_FROM=hassioaddons/base:8.0.6
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}
 
@@ -6,20 +6,22 @@ FROM ${BUILD_FROM}
 # hadolint ignore=DL3003
 RUN \
     apk add --no-cache \
-        hwids=20201207-r0 \
+        hwids=20200306-r0 \
+        libcrypto1.1=1.1.1i-r0 \
         libtool=2.4.6-r7 \
+        libssl1.1=1.1.1i-r0 \
         libusb-compat=0.1.5-r4 \
-        neon=0.31.2-r0 \
-        net-snmp-libs=5.9-r2 \
+        neon=0.31.1-r0 \
+        net-snmp-libs=5.8-r3 \
         openssl=1.1.1i-r0 \
-        usbutils=013-r0 \
+        usbutils=012-r1 \
     && apk add --no-cache --virtual .build-dependencies \
-        autoconf=2.69-r3 \
-        automake=1.16.3-r0 \
+        autoconf=2.69-r2 \
+        automake=1.16.2-r0 \
         build-base=0.5-r2 \
         libusb-compat-dev=0.1.5-r4 \
-        neon-dev=0.31.2-r0 \
-        net-snmp-dev=5.9-r2 \
+        neon-dev=0.31.1-r0 \
+        net-snmp-dev=5.8-r3 \
     \
     && curl -J -L -o /tmp/nut.tar.gz \
         http://www.networkupstools.org/source/2.7/nut-2.7.4.tar.gz \
