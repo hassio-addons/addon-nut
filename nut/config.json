@@ -65,7 +65,6 @@
     "remote_ups_password": "password?",
     "remote_ups_user": "str?",
     "upsd_maxage": "int?",
-    "fake_usb_devices": "bool?",
     "i_like_to_be_pwned": "bool?",
     "leave_front_door_open": "bool?"
   }
