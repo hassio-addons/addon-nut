@@ -9,8 +9,9 @@ RUN \
     && apt-get install -y --no-install-recommends\
         nut=2.7.4-8 \
         nut-snmp=2.7.4-8 \
-        usbutils=1:010-3
-
+        usbutils=1:010-3 \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 # Copy root filesystem
 COPY rootfs /
 
