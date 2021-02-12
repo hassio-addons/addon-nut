@@ -3,6 +3,7 @@
 # Home Assistant Community Add-on: Network UPS Tools
 # Configures Network UPS Tools for Client Mode only
 # ==============================================================================
+declare deadtime=15
 declare -a CONF_ENTRIES=("name" "host" "password" "user")
 
 if bashio::config.equals 'mode' 'netclient' ;then
@@ -20,3 +21,9 @@ if bashio::config.equals 'mode' 'netclient' ;then
     echo "MONITOR ${rname}@${rhost} 1 ${ruser} ${rpwd} slave" \
         >> /etc/nut/upsmon.conf
 fi
+
+if bashio::config.has_value "upsmon_deadtime"; then
+    deadtime=$(bashio::config "upsmon_deadtime")
+fi
+
+echo "DEADTIME ${deadtime}" >> /etc/nut/upsmon.conf
