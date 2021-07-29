@@ -102,7 +102,7 @@ if bashio::config.equals 'mode' 'netserver' ;then
     fi
 fi
 
-shutdowncmd="halt"
+shutdowncmd="\"s6-svscanctl -t /var/run/s6/services\""
 if bashio::config.true 'shutdown_host'; then
     bashio::log.warning "UPS Shutdown will shutdown the host"
     shutdowncmd="/usr/bin/shutdownhost"
