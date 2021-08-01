@@ -7,6 +7,7 @@
   "startup": "system",
   "arch": ["aarch64", "amd64", "armhf", "armv7", "i386"],
   "uart": true,
+  "udev": true,
   "usb": true,
   "hassio_api": true,
   "hassio_role": "manager",
@@ -65,7 +66,7 @@
     "remote_ups_password": "password?",
     "remote_ups_user": "str?",
     "upsd_maxage": "int?",
-    "fake_usb_devices": "bool?",
+    "upsmon_deadtime": "int?",
     "i_like_to_be_pwned": "bool?",
     "leave_front_door_open": "bool?"
   }

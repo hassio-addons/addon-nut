@@ -27,7 +27,7 @@ jobs:
         uses: actions/checkout@v2.3.4
       - name: 🚀 Run add-on information action
         id: information
-        uses: frenck/action-addon-information@v1.0.0
+        uses: frenck/action-addon-information@v1.2
 
   lint-addon:
     name: Lint Add-on
@@ -38,7 +38,7 @@ jobs:
       - name: ⤵️ Check out code from GitHub
         uses: actions/checkout@v2.3.4
       - name: 🚀 Run Add-on Lint
-        uses: frenck/action-addon-linter@v2.0.0
+        uses: frenck/action-addon-linter@v2.2
         with:
           community: true
           path: "./${{ needs.information.outputs.target }}"
@@ -52,7 +52,7 @@ jobs:
       - name: ⤵️ Check out code from GitHub
         uses: actions/checkout@v2.3.4
       - name: 🚀 Run Hadolint
-        uses: brpaz/hadolint-action@v1.3.1
+        uses: brpaz/hadolint-action@v1.5.0
         with:
           dockerfile: "./${{ needs.information.outputs.target }}/Dockerfile"
 
@@ -83,7 +83,7 @@ jobs:
       - name: ⤵️ Check out code from GitHub
         uses: actions/checkout@v2.3.4
       - name: 🚀 Run Shellcheck
-        uses: ludeeus/action-shellcheck@1.0.0
+        uses: ludeeus/action-shellcheck@1.1.0
         env:
           SHELLCHECK_OPTS: -s bash
 
@@ -129,16 +129,20 @@ jobs:
         uses: actions/checkout@v2.3.4
       - name: 🏗 Set up build cache
         id: cache
-        uses: actions/cache@v2.1.4
+        uses: actions/cache@v2.1.6
         with:
           path: /tmp/.docker-cache
-          key: docker-${{ github.ref }}-${{ matrix.architecture }}-${{ github.sha }}
+          key:
+            docker-${{ github.ref }}-${{ matrix.architecture }}-${{ github.sha
+            }}
           restore-keys: |
             docker-${{ github.ref }}-${{ matrix.architecture }}
       - name: 🏗 Set up QEMU
-        uses: docker/setup-qemu-action@v1.0.1
+        uses: docker/setup-qemu-action@v1.2.0
       - name: 🏗 Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1.1.1
+        uses: docker/setup-buildx-action@v1.5.1
+      - name: 🏗 Set up CodeNotary
+        run: bash <(curl https://getvcn.codenotary.com -L)
       - name: ℹ️ Compose build flags
         id: flags
         run: |
@@ -160,8 +164,21 @@ jobs:
             echo "::error ::Could not determine platform for architecture ${{ matrix.architecture }}"
             exit 1
           fi
+      - name: ⤵️ Download base image
+        run: docker pull "${{ steps.flags.outputs.from }}"
+      - name: ✅ Verify authenticity of base image
+        run: |
+          vcn authenticate \
+            "docker://${{ steps.flags.outputs.from }}"
+          vcn authenticate \
+            --output json \
+            --signerID 0x03e406879fd89e52f38f4aab0061266d1183980a \
+            "docker://${{ steps.flags.outputs.from }}" \
+            | jq \
+              --exit-status \
+              '.verification.status == 0'
       - name: 🚀 Build
-        uses: docker/build-push-action@v2.2.2
+        uses: docker/build-push-action@v2.6.1
         with:
           push: false
           context: ${{ needs.information.outputs.target }}
