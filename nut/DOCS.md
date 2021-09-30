@@ -41,7 +41,7 @@ advanced users.
 
 **Note**: _Remember to restart the add-on when the configuration is changed._
 
-Network UPS Tools add-on configuration:
+Network UPS Tools add-on configuration using the USB `usbhid-ups` driver:
 
 ```yaml
 users:
@@ -59,7 +59,37 @@ mode: netserver
 shutdown_host: "false"
 ```
 
-**Note**: _This is just an example, don't copy and paste it! Create your own!_
+Network UPS Tools add-on configuration using the `snmp-ups` driver:
+
+```yaml
+users:
+  - username: nutty
+    password: changeme
+    instcmds:
+      - all
+    actions: []
+devices:
+  - name: myups
+    driver: snmp-ups
+    port: <ip address>
+    config:
+      - community=<your community>
+      - snmp_version=v1
+  - name: myups2
+    driver: snmp-ups
+    port: <ip address>
+    config:
+      - snmp_version=v3
+      - secLevel=authPriv
+      - secName=mysecurityname
+      - authPassword = myauthenticationpassphrase
+      - privPassword = myprivatepassphrase
+mode: netserver
+shutdown_host: "false"
+```
+Extra arguments can be put in the `config:` section
+
+**Note**: _These are just an examples, don't copy and paste it! Create your own!_
 
 ### Option: `log_level`
 
@@ -143,7 +173,7 @@ usually is `/dev/ttyS0`. Use `auto` to automatically detect the port.
 #### Sub-option: `config`
 
 A list of additional [options][ups-fields] to configure for this UPS. The common
-[`usbhid-ups`][usbhid-ups] driver allows you to distinguish between devices by
+[`usbhid-ups`][usbhid-ups] or [`snmp-ups`][snmp-ups] drivers allows you to distinguish between devices by
 using a combination of the `vendor`, `product`, `serial`, `vendorid`, and
 `productid` options:
 
@@ -378,3 +408,4 @@ SOFTWARE.
 [upsd]: https://networkupstools.org/docs/man/upsd.html
 [upsmon]: https://networkupstools.org/docs/man/upsmon.html
 [usbhid-ups]: https://networkupstools.org/docs/man/usbhid-ups.html
+[snmp-ups]: https://networkupstools.org/docs/man/snmp-ups.html
