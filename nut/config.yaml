@@ -12,6 +12,7 @@ arch:
   - armhf
   - armv7
   - i386
+init: false
 uart: true
 udev: true
 usb: true
