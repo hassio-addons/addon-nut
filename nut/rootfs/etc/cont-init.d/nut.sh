@@ -1,4 +1,4 @@
-#!/usr/bin/with-contenv bashio
+#!/command/with-contenv bashio
 # ==============================================================================
 # Home Assistant Community Add-on: Network UPS Tools
 # Configures Network UPS Tools
@@ -10,6 +10,13 @@ declare password
 declare shutdowncmd
 declare upsmonpwd
 declare username
+
+chown root:root /var/run/nut
+chmod 0770 /var/run/nut
+
+chown -R root:root /etc/nut
+find /etc/nut -not -perm 0660 -type f -exec chmod 0660 {} \;
+find /etc/nut -not -perm 0660 -type d -exec chmod 0660 {} \;
 
 nutmode=$(bashio::config 'mode')
 bashio::log.info "Setting mode to ${nutmode}..."

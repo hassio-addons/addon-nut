@@ -1,5 +1,0 @@
-/etc/nut/* true root 0660 0660
-/usr/bin/notify false root 0755 0755
-/usr/bin/shutdownhost false root 0755 0755
-/usr/bin/wall false root 0755 0755
-/var/run/nut false root 0770 0770
