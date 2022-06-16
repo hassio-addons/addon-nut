@@ -225,6 +225,21 @@ specific drivers, should not be changed for the majority of users.
 Allows setting the DEADTIME value in upsmon.conf to adjust the stale time for
 the monitor process, should not be changed for the majority of users.
 
+### Option: `upsmon_pollfreq`
+
+Allows setting the POLLFREQ value in upsmon.conf to adjust poll frequency for
+the monitor process. By default, upsmon uses 5 seconds. If this is flooding
+your network with activity, you can make it higher.
+You can also make it lower to get faster notification events in some cases.
+
+### Option: `upsmon_pollfreqalert`
+
+Allows setting the POLLFREQALERT value in upsmon.conf to adjust poll frequency
+if any of its UPSes are on battery. You can use this along with POLLFREQ
+above to slow down polls during normal behavior, but get quicker updates
+when something bad happens. This should always be equal to or lower than
+the POLLFREQ value. By default it is also set yo 5 seconds.
+
 ### Option: `i_like_to_be_pwned`
 
 Adding this option to the add-on configuration allows to you bypass the

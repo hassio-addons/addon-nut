@@ -62,5 +62,7 @@ schema:
   remote_ups_user: str?
   upsd_maxage: int?
   upsmon_deadtime: int?
+  upsmon_pollfreq: int?
+  upsmon_pollfreqalert: int?
   i_like_to_be_pwned: bool?
   leave_front_door_open: bool?
