@@ -1,18 +1,13 @@
-ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base:6.1.0
+ARG BUILD_FROM=ghcr.io/hassio-addons/base:12.2.3
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}
 
 # Setup base
 # hadolint ignore=DL3003
 RUN \
-    apt-get update \
-    && apt-get install -y --no-install-recommends\
-        nut=2.7.4-13 \
-        nut-snmp=2.7.4-13 \
-        nut-xml=2.7.4-13 \
-        usbutils=1:013-3 \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+    apk add --no-cache \
+        nut=2.8.0-r0 \
+        usbutils=014-r0
 
 # Copy root filesystem
 COPY rootfs /
