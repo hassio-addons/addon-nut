@@ -80,6 +80,11 @@ if bashio::config.equals 'mode' 'netserver' ;then
         upsname=$(bashio::config "devices[${device}].name")
         upsdriver=$(bashio::config "devices[${device}].driver")
         upsport=$(bashio::config "devices[${device}].port")
+        if bashio::config.has_value "devices[${device}].powervalue"; then
+            upspowervalue=$(bashio::config "devices[${device}].powervalue")
+        else
+            upspowervalue="1"
+        fi
 
         bashio::log.info "Configuring Device named ${upsname}..."
         {
@@ -96,7 +101,7 @@ if bashio::config.equals 'mode' 'netserver' ;then
         done
         IFS="$OIFS"
 
-        echo "MONITOR ${upsname}@localhost 1 upsmonmaster ${upsmonpwd} master" \
+        echo "MONITOR ${upsname}@localhost ${upspowervalue} upsmonmaster ${upsmonpwd} master" \
             >> /etc/nut/upsmon.conf
     done
 
