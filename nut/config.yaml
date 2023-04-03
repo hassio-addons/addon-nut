@@ -51,7 +51,7 @@ schema:
     - name: str
       driver: str
       port: str
-      powervalue: list(0|1)?
+      powervalue: int?
       config:
         - str
   mode: list(netserver|netclient)
