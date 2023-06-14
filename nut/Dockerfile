@@ -7,10 +7,10 @@ FROM ${BUILD_FROM}
 RUN \
     apt-get update \
     && apt-get install -y --no-install-recommends\
-        nut=2.7.4-13 \
-        nut-snmp=2.7.4-13 \
-        nut-xml=2.7.4-13 \
-        usbutils=1:013-3 \
+        nut=2.8.0-7 \
+        nut-snmp=2.8.0-7 \
+        nut-xml=2.8.0-7 \
+        usbutils=1:014-1 \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
