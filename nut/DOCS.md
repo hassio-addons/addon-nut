@@ -199,10 +199,10 @@ allow testing without impact to the system.
 
 ### Option: `list_usb_devices`
 
-When this option is set to `true`, a list of connected USB devices will be
-displayed in the add-on log when the add-on starts up. This option can be used
-to help identify different UPS devices when multiple UPS devices are connected
-to the system.
+When this option is set to `true`, a list of connected USB devices, along with the
+configuration for devices, will be displayed in the add-on log when the add-on
+starts up. This option can be used to help identify different UPS devices when
+multiple UPS devices are connected to the system.
 
 ### Option: `remote_ups_name`
 

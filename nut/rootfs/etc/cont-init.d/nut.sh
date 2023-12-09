@@ -25,6 +25,8 @@ sed -i "s#%%nutmode%%#${nutmode}#g" /etc/nut/nut.conf
 if bashio::config.true 'list_usb_devices' ;then
     bashio::log.info "Connected USB devices:"
     lsusb
+    bashio::log.info "NUT USB UPS configuration:"
+    nut-scanner -U
 fi
 
 if bashio::config.equals 'mode' 'netserver' ;then
