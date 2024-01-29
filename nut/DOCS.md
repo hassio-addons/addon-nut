@@ -15,7 +15,7 @@ many [individuals and companies][nut-acknowledgements].
 
 Be sure to add the NUT integration after starting the add-on.
 
-**Note**: _The host `a0d7b954-nut` can be used to allow Home Assistant to
+**Note**: _The host `a0d7b954-nut` has be used to allow Home Assistant to
 communicate directly with the addon_
 
 For more information on how to configure the NUT integration in Home Assistant
@@ -35,7 +35,7 @@ comparison to installing any other Home Assistant add-on.
 1. Configure the `users` and `devices` options.
 1. Start the "Network UPS Tools" add-on.
 1. Check the logs of the "Network UPS Tools" add-on to see if everything went well.
-1. Configure the [NUT Integration][nut-ha-docs].
+1. Configure the [NUT Integration][nut-ha-docs] and use `a0d7b954-nut` hostname.
 
 ## Configuration
 
