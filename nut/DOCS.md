@@ -15,7 +15,7 @@ many [individuals and companies][nut-acknowledgements].
 
 Be sure to add the NUT integration after starting the add-on.
 
-**Note**: _The host `a0d7b954-nut` has be used to allow Home Assistant to
+**Note**: _The host `a0d7b954-nut` must be used to allow Home Assistant to
 communicate directly with the addon_
 
 For more information on how to configure the NUT integration in Home Assistant
