@@ -90,7 +90,7 @@ our [GitHub Repository][repository].
 
 MIT License
 
-Copyright (c) 2018-2024 Dale Higgs
+Copyright (c) 2018-2025 Dale Higgs
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -131,7 +131,7 @@ SOFTWARE.
 [i386-shield]: https://img.shields.io/badge/i386-no-red.svg
 [issue]: https://github.com/hassio-addons/addon-nut/issues
 [license-shield]: https://img.shields.io/github/license/hassio-addons/addon-nut.svg
-[maintenance-shield]: https://img.shields.io/maintenance/yes/2024.svg
+[maintenance-shield]: https://img.shields.io/maintenance/yes/2025.svg
 [nut-acknowledgements]: https://networkupstools.org/acknowledgements.html
 [nut-compatible]: https://networkupstools.org/stable-hcl.html
 [nut-features]: https://networkupstools.org/features.html
