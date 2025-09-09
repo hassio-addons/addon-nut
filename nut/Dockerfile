@@ -18,10 +18,10 @@ RUN \
 # Copy root filesystem
 COPY rootfs /
 
-# Make init scripts executable
-RUN chmod +x /etc/cont-init.d/*.sh && \
-    chmod +x /etc/services.d/*/* && \
-    chmod +x /usr/bin/*
+# Ensure init/service scripts are executable (avoid brittle globs; don’t touch system binaries)
+RUN set -e; \
+    [ -d /etc/cont-init.d ] && find /etc/cont-init.d -type f -name '*.sh' -exec chmod +x {} +; \
+    [ -d /etc/services.d ] && find /etc/services.d -maxdepth 2 -type f -exec chmod +x {} +;
 
 # Build arguments
 ARG BUILD_ARCH
