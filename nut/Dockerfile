@@ -1,27 +1,26 @@
-ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base:7.8.3
+ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base:8.0.0
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}
 
 # Setup base
 # hadolint ignore=DL3003
 RUN \
-    echo 'deb http://deb.debian.org/debian testing main' > /etc/apt/sources.list.d/testing.list \
-    && apt-get update \
+    apt-get update \
     && apt-get install -y --no-install-recommends\
-    nut=2.8.3-3 \
-    nut-snmp=2.8.3-3 \
-    nut-xml=2.8.3-3 \
-    usbutils=1:014-1+deb12u1 \
+    nut=2.8.1-5 \
+    nut-snmp=2.8.1-5 \
+    nut-xml=2.8.1-5 \
+    usbutils=1:018-2 \
     && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /etc/apt/sources.list.d/testing.list
+    && rm -rf /var/lib/apt/lists/*
 
 # Copy root filesystem
 COPY rootfs /
 
-# Ensure init/service scripts are executable (avoid brittle globs; don’t touch system binaries)
-RUN set -e; \
-    [ -d /etc/cont-init.d ] && find /etc/cont-init.d -type f -name '*.sh' -exec chmod +x {} +; \
-    [ -d /etc/services.d ] && find /etc/services.d -maxdepth 2 -type f -exec chmod +x {} +;
+# Make init scripts executable
+RUN chmod +x /etc/cont-init.d/*.sh && \
+    chmod +x /etc/services.d/ups*/* && \
+    chmod +x /usr/bin/*
 
 # Build arguments
 ARG BUILD_ARCH
