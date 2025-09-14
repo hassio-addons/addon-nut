@@ -37,15 +37,7 @@ are [compatible][nut-compatible].
 The Network UPS Tools (NUT) project is the combined effort of
 many [individuals and companies][nut-acknowledgements].
 
-Be sure to add the NUT integration after starting the add-on.
-
-**Note**: _The host `a0d7b954-nut` can be used to allow Home Assistant to
-communicate directly with the addon_
-
-For more information on how to configure the NUT integration in Home Assistant
-see the [NUT integration documentation][nut-ha-docs].
-
-[:books: Read the full add-on documentation][docs]
+[:books: Read the full add-on documentation, including installation instructions][docs]
 
 ## Support
 
