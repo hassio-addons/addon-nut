@@ -8,7 +8,6 @@ startup: system
 arch:
   - aarch64
   - amd64
-  - armv7
 init: false
 uart: true
 udev: true
