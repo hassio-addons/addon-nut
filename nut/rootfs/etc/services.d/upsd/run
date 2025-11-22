@@ -3,7 +3,7 @@
 # Home Assistant Community Add-on: Network UPS Tools
 # Run upsd
 # ==============================================================================
-if ! bashio::config.equals 'mode' 'netserver' ;then
+if ! bashio::config.equals 'mode' 'netserver'; then
     exec sleep 864000
 fi
 

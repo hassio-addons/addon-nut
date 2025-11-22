@@ -3,7 +3,7 @@
 # Home Assistant Community Add-on: Network UPS Tools
 # Run upsmon
 # ==============================================================================
-if bashio::config.equals 'mode' 'netserver' ;then
+if bashio::config.equals 'mode' 'netserver'; then
     bashio::net.wait_for 3493
 fi
 

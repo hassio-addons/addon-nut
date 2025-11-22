@@ -55,7 +55,7 @@ devices:
     port: auto
     config: []
 mode: netserver
-shutdown_host: "false"
+shutdown_host: false
 ```
 
 **Note**: _This is just an example, don't copy and paste it! Create your own!_

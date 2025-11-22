@@ -3,8 +3,11 @@
 # Home Assistant Community Add-on: Network UPS Tools
 # Configures Network UPS Tools
 # ==============================================================================
+readonly NUT_CONF=/etc/nut/nut.conf
 readonly USERS_CONF=/etc/nut/upsd.users
 readonly UPSD_CONF=/etc/nut/upsd.conf
+readonly UPS_CONF=/etc/nut/ups.conf
+readonly UPSMON_CONF=/etc/nut/upsmon.conf
 declare nutmode
 declare password
 declare shutdowncmd
@@ -20,14 +23,14 @@ find /etc/nut -not -perm 0660 -type d -exec chmod 0660 {} \;
 
 nutmode=$(bashio::config 'mode')
 bashio::log.info "Setting mode to ${nutmode}..."
-sed -i "s#%%nutmode%%#${nutmode}#g" /etc/nut/nut.conf
+sed -i "s#%%nutmode%%#${nutmode}#g" "${NUT_CONF}"
 
-if bashio::config.true 'list_usb_devices' ;then
-    bashio::log.info "Connected USB devices:"
+if bashio::config.true 'list_usb_devices'; then
+    bashio::log.info 'Connected USB devices:'
     lsusb
 fi
 
-if bashio::config.equals 'mode' 'netserver' ;then
+if bashio::config.equals 'mode' 'netserver'; then
     bashio::log.info "Generating ${USERS_CONF}..."
 
     # Create Monitor User
@@ -71,8 +74,8 @@ if bashio::config.equals 'mode' 'netserver' ;then
         fi
     done
 
-    if bashio::config.has_value "upsd_maxage"; then
-        maxage=$(bashio::config "upsd_maxage")
+    if bashio::config.has_value 'upsd_maxage'; then
+        maxage=$(bashio::config 'upsd_maxage')
         echo "MAXAGE ${maxage}" >> "${UPSD_CONF}"
     fi
 
@@ -83,7 +86,7 @@ if bashio::config.equals 'mode' 'netserver' ;then
         if bashio::config.has_value "devices[${device}].powervalue"; then
             upspowervalue=$(bashio::config "devices[${device}].powervalue")
         else
-            upspowervalue="1"
+            upspowervalue='1'
         fi
 
         bashio::log.info "Configuring Device named ${upsname}..."
@@ -92,20 +95,20 @@ if bashio::config.equals 'mode' 'netserver' ;then
             echo "[${upsname}]"
             echo "  driver = ${upsdriver}"
             echo "  port = ${upsport}"
-        } >> /etc/nut/ups.conf
+        } >> "${UPS_CONF}"
 
         OIFS=$IFS
         IFS=$'\n'
         for configitem in $(bashio::config "devices[${device}].config"); do
-            echo "  ${configitem}" >> /etc/nut/ups.conf
+            echo "  ${configitem}" >> "${UPS_CONF}"
         done
         IFS="$OIFS"
 
         echo "MONITOR ${upsname}@localhost ${upspowervalue} upsmonmaster ${upsmonpwd} master" \
-            >> /etc/nut/upsmon.conf
+            >> "${UPSMON_CONF}"
     done
 
-    bashio::log.info "Starting the UPS drivers..."
+    bashio::log.info 'Starting the UPS drivers...'
     # Run upsdrvctl
     if bashio::debug; then
         upsdrvctl -u root -D start
@@ -114,10 +117,10 @@ if bashio::config.equals 'mode' 'netserver' ;then
     fi
 fi
 
-shutdowncmd="/run/s6/basedir/bin/halt"
+shutdowncmd='/run/s6/basedir/bin/halt'
 if bashio::config.true 'shutdown_host'; then
-    bashio::log.warning "UPS Shutdown will shutdown the host"
-    shutdowncmd="/usr/bin/shutdownhost"
+    bashio::log.warning 'UPS Shutdown will shutdown the host'
+    shutdowncmd='/usr/bin/shutdownhost'
 fi
 
-echo "SHUTDOWNCMD  ${shutdowncmd}" >> /etc/nut/upsmon.conf
+echo "SHUTDOWNCMD ${shutdowncmd}" >> "${UPSMON_CONF}"
