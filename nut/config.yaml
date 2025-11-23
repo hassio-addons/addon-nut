@@ -33,8 +33,8 @@ options:
       config: []
   mode: netserver
   shutdown_host: "false"
+  log_level: info
 schema:
-  log_level: list(trace|debug|info|notice|warning|error|fatal)?
   users:
     - username: str
       password: password
@@ -52,6 +52,7 @@ schema:
         - str
   mode: list(netserver|netclient)
   shutdown_host: bool
+  log_level: list(trace|debug|info|notice|warning|error|fatal)?
   list_usb_devices: bool?
   remote_ups_name: str?
   remote_ups_host: str?

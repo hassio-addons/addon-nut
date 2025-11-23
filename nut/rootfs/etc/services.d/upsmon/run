@@ -8,4 +8,8 @@ if bashio::config.equals 'mode' 'netserver' ;then
 fi
 
 bashio::log.info "Starting the UPS monitor and shutdown controller..."
-exec upsmon -p -D
+if bashio::info; then
+    exec upsmon -p -D
+else
+    exec upsmon -p -F
+fi
