@@ -32,7 +32,7 @@ options:
       port: auto
       config: []
   mode: netserver
-  shutdown_host: "false"
+  shutdown_host: false
 schema:
   log_level: list(trace|debug|info|notice|warning|error|fatal)?
   users:
