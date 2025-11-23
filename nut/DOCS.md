@@ -60,24 +60,6 @@ shutdown_host: "false"
 
 **Note**: _This is just an example, don't copy and paste it! Create your own!_
 
-### Option: `log_level`
-
-The `log_level` option controls the level of log output by the add-on and can
-be changed to be more or less verbose, which might be useful when you are
-dealing with an unknown issue. Possible values are:
-
-- `trace`: Show every detail, like all called internal functions.
-- `debug`: Shows detailed debug information.
-- `info`: Normal (usually) interesting events.
-- `warning`: Exceptional occurrences that are not errors.
-- `error`: Runtime errors that do not require immediate action.
-- `fatal`: Something went terribly wrong. Add-on becomes unusable.
-
-Please note that each level automatically includes log messages from a
-more severe level, e.g., `debug` also shows `info` messages. By default,
-the `log_level` is set to `info`, which is the recommended setting unless
-you are troubleshooting.
-
 ### Option: `users`
 
 This option allows you to specify a list of one or more users. Each user can
@@ -193,6 +175,35 @@ Recognized values are `netserver` and `netclient`.
 When this option is set to `true` on a UPS shutdown command, the host system
 will be shutdown. When set to `false` only the add-on will be stopped. This is to
 allow testing without impact to the system.
+
+### Option: `log_level`
+
+The `log_level` option controls the level of log output by the add-on's scripts,
+NUT, and libusb. Possible values are:
+
+- `trace`: Show every detail, like all called internal functions.
+  Within NUT, this sets `debug_min = 9` and `LIBUSB_DEBUG = 4`.
+- `debug`: Shows detailed debug information.
+  Within NUT, this sets `debug_min = 4` and `LIBUSB_DEBUG = 3`.
+- `info`: Normal (usually) interesting events.
+  Within NUT, this sets `debug_min = 1` and implies `LIBUSB_DEBUG = 0`.
+- `notice`: Notable events that require attention.
+  Within NUT, this implies `debug_min = 0` and `LIBUSB_DEBUG = 0`.
+- `warning`: Exceptional occurrences that are not errors.
+  Within NUT, this implies `debug_min = 0` and `LIBUSB_DEBUG = 0`.
+- `error`: Runtime errors that do not require immediate action.
+  Within NUT, this implies `debug_min = 0` and `LIBUSB_DEBUG = 0`.
+- `fatal`: Something went terribly wrong. Add-on becomes unusable.
+  Within NUT, this implies `debug_min = 0` and `LIBUSB_DEBUG = 0`.
+
+Please note that each level automatically includes log messages from a
+more severe level, e.g., `debug` also shows `info` messages. By default,
+the `log_level` is set to `info`, which is the recommended setting unless
+you are troubleshooting.
+
+For more advanced control of logging, you can explicitly set `debug_min` and/or
+`LIBUSB_DEBUG` in the `config` sub-option of each `device`, which will override
+the values implicitly set by `log_level`.
 
 ### Option: `list_usb_devices`
 
